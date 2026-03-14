@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<!-- Header Actions -->
-		<div class="flex items-center gap-6">
+		<div class="flex items-center gap-4 md:gap-6">
 			<!-- Language Toggle (AR/EN) -->
 			<button class="text-xs font-bold border border-slate-200 dark:border-slate-700 rounded-full px-3 py-1.5 hover:text-primary hover:border-primary transition-all hidden md:flex items-center gap-1.5" id="lang-toggle" aria-label="<?php esc_attr_e( 'Toggle language', 'luxe-landscape' ); ?>">
 				<span class="material-symbols-outlined text-sm">translate</span>
@@ -75,10 +75,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<!-- <button class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'Search', 'luxe-landscape' ); ?>">search</button> -->
 
 			<!-- Account -->
-			<?php if ( class_exists( 'WooCommerce' ) ) : ?>
-				<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
+			<?php if ( is_user_logged_in() ) : ?>
+				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+					<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
+				<?php else : ?>
+					<button class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'Account', 'luxe-landscape' ); ?>">person</button>
+				<?php endif; ?>
 			<?php else : ?>
-				<button class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'Account', 'luxe-landscape' ); ?>">person</button>
+				<a href="<?php echo esc_url( site_url( '/sign-in' ) ); ?>" class="hidden md:flex items-center gap-1.5 text-sm font-bold bg-slate-100 dark:bg-emerald-900/30 border border-slate-200 dark:border-primary/20 hover:bg-primary hover:text-slate-900 transition-all rounded-full px-4 py-2">
+					<span class="auth-link-signin"><?php esc_html_e( 'Sign In', 'luxe-landscape' ); ?></span>
+				</a>
 			<?php endif; ?>
 
 			<!-- Cart -->

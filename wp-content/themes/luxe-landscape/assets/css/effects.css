@@ -22,6 +22,28 @@
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.glass-card {
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	border: 1px solid rgba(17, 212, 98, 0.1);
+}
+
+.dark .glass-card {
+	background: rgba(16, 34, 24, 0.6);
+}
+
+/* ============================================
+   ORGANIC BLUR SHAPES
+   ============================================ */
+.organic-shape {
+	position: absolute;
+	border-radius: 50%;
+	filter: blur(80px);
+	z-index: -1;
+	opacity: 0.4;
+}
+
 /* ============================================
    BENTO GRADIENT OVERLAY
    ============================================ */

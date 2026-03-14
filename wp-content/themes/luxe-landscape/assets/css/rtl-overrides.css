@@ -10,7 +10,9 @@
 /* Flip arrow icons for RTL */
 [dir="rtl"] .section-link .material-symbols-outlined,
 [dir="rtl"] #trending-prev .material-symbols-outlined,
-[dir="rtl"] #trending-next .material-symbols-outlined {
+[dir="rtl"] #trending-next .material-symbols-outlined,
+[dir="rtl"] .auth-submit .material-symbols-outlined,
+[dir="rtl"] .auth-submit-signup .material-symbols-outlined {
 	transform: scaleX(-1);
 }
 

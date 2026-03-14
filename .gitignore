@@ -1,0 +1,29 @@
+# WordPress core
+wp-config.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+sitemap.xml
+sitemap.xml.gz
+
+# Node / Composer
+node_modules/
+vendor/
+npm-debug.log
+yarn-error.log
+
+# Mac / Windows hidden files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/stitch
+/.agents

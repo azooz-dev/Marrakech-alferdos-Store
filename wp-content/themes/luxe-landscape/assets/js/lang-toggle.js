@@ -75,6 +75,26 @@
 		'.footer-badge-secure': { en: 'Secure Checkout', ar: 'دفع آمن' },
 		'.footer-badge-shipping': { en: 'Fast Shipping', ar: 'شحن سريع' },
 		'.footer-badge-warranty': { en: 'Year Warranty', ar: 'ضمان سنوات' },
+
+		// Auth Pages
+		'.auth-brand': { en: 'Luxe Landscape', ar: 'لاندسكيب الفاخر' },
+		'.auth-title-login': { en: 'Welcome Back', ar: 'مرحباً بعودتك' },
+		'.auth-subtitle-login': { en: 'Enter your phone number to access your account', ar: 'أدخل رقم هاتفك للوصول إلى حسابك' },
+		'.auth-label-phone': { en: 'Phone Number', ar: 'رقم الهاتف' },
+		'.auth-btn-login': { en: 'Send OTP', ar: 'إرسال رمز التحقق' },
+		'.auth-no-account': { en: 'Don\'t have an account?', ar: 'ليس لديك حساب؟' },
+		'.auth-link-signup': { en: 'Sign Up', ar: 'إنشاء حساب' },
+		'.auth-title-signup': { en: 'Join Luxe Landscape', ar: 'انضم إلى لاندسكيب الفاخر' },
+		'.auth-subtitle-signup': { en: 'Create an account to start your luxury project', ar: 'أنشئ حساباً لبدء مشروعك الفاخر' },
+		'.auth-label-name': { en: 'Full Name', ar: 'الاسم الكامل' },
+		'.auth-btn-signup': { en: 'Create Account', ar: 'إنشاء حساب' },
+		'.auth-agree-1': { en: 'I agree to the', ar: 'أوافق على' },
+		'.auth-agree-2': { en: 'and', ar: 'و' },
+		'.auth-has-account': { en: 'Already have an account?', ar: 'لديك حساب بالفعل؟' },
+		'.auth-link-signin': { en: 'Sign In', ar: 'تسجيل الدخول' },
+		'.auth-footer-1': { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
+		'.auth-footer-2': { en: 'Terms of Service', ar: 'شروط الخدمة' },
+		'.auth-footer-3': { en: 'Support', ar: 'الدعم' },
 	};
 
 	/**
@@ -91,6 +111,7 @@
 		// Update placeholders on inputs
 		if (lang === 'ar') {
 			document.querySelectorAll('input[placeholder="Full Name"]').forEach(function(el) { el.placeholder = 'الاسم الكامل'; });
+			document.querySelectorAll('input[placeholder="Enter your full name"]').forEach(function(el) { el.placeholder = 'أدخل اسمك الكامل'; });
 			document.querySelectorAll('input[placeholder="Project Size (sqm)"]').forEach(function(el) { el.placeholder = 'حجم المشروع (م²)'; });
 			document.querySelectorAll('input[placeholder="Phone Number"]').forEach(function(el) { el.placeholder = 'رقم الهاتف'; });
 			document.querySelectorAll('textarea[placeholder="Tell us about your project"]').forEach(function(el) { el.placeholder = 'أخبرنا عن مشروعك'; });
@@ -99,6 +120,7 @@
 			document.querySelectorAll('input[placeholder]').forEach(function(el) {
 				var map = {
 					'الاسم الكامل': 'Full Name',
+					'أدخل اسمك الكامل': 'Enter your full name',
 					'حجم المشروع (م²)': 'Project Size (sqm)',
 					'رقم الهاتف': 'Phone Number',
 					'أخبرنا عن مشروعك': 'Tell us about your project',

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#11d462",
+            "background-light": "#f6f8f7",
+            "background-dark": "#0a1a12", // Custom deep forest green for background
+          },
+          fontFamily: {
+            "display": ["Space Grotesk"]
+          },
+          borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #0a1a12;
+      overflow-x: hidden;
+    }
+
+    .glass-card {
+      background: rgba(16, 34, 24, 0.6);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(17, 212, 98, 0.1);
+    }
+
+    .organic-shape {
+      position: absolute;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 min-h-screen flex items-center justify-center p-6 relative">
+  <!-- Background Organic Shapes -->
+  <div class="organic-shape w-[500px] h-[500px] bg-primary/20 rounded-full -top-40 -left-20"></div>
+  <div class="organic-shape w-[400px] h-[400px] bg-emerald-900/40 rounded-full -bottom-20 -right-20"></div>
+  <div
+    class="organic-shape w-[300px] h-[300px] bg-primary/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  </div>
+  <main class="w-full max-w-[520px] z-10">
+    <!-- Logo Section -->
+    <div class="flex flex-col items-center mb-10">
+      <div
+        class="size-14 bg-primary/20 rounded-xl flex items-center justify-center text-primary mb-4 border border-primary/30 shadow-[0_0_20px_rgba(17,212,98,0.2)]">
+        <span class="material-symbols-outlined text-4xl">landscape</span>
+      </div>
+      <h1 class="text-2xl font-bold tracking-tight text-white uppercase tracking-widest">Luxe Landscape</h1>
+    </div>
+    <!-- Signup Card -->
+    <div class="glass-card rounded-xl p-10 shadow-2xl">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-white mb-2">Join Luxe Landscape</h2>
+        <p class="text-slate-400 font-light">Create an account to start your luxury project</p>
+      </div>
+      <form class="space-y-6">
+        <!-- Full Name -->
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-slate-300 ml-1">Full Name</label>
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">person</span>
+            <input
+              class="w-full bg-background-dark/50 border border-slate-700/50 rounded-lg py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+              placeholder="Enter your full name" type="text" />
+          </div>
+        </div>
+        <!-- Phone Number Group -->
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-slate-300 ml-1">Phone Number</label>
+          <div class="flex gap-3">
+            <div class="relative w-32 shrink-0">
+              <select
+                class="w-full appearance-none bg-background-dark/50 border border-slate-700/50 rounded-lg py-4 px-4 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 cursor-pointer">
+                <option>+1 (US)</option>
+                <option>+44 (UK)</option>
+                <option>+33 (FR)</option>
+                <option>+971 (UAE)</option>
+              </select>
+              <span
+                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+            </div>
+            <div class="relative flex-1">
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">call</span>
+              <input
+                class="w-full bg-background-dark/50 border border-slate-700/50 rounded-lg py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                placeholder="(555) 000-0000" type="tel" />
+            </div>
+          </div>
+        </div>
+        <!-- Terms -->
+        <div class="flex items-center gap-3 py-2">
+          <label class="relative flex items-center cursor-pointer">
+            <input
+              class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-700 bg-background-dark/50 checked:bg-primary checked:border-primary transition-all"
+              type="checkbox" />
+            <span
+              class="absolute text-background-dark opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+              <svg class="h-3.5 w-3.5" fill="currentColor" stroke="currentColor" stroke-width="1" viewbox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  fill-rule="evenodd"></path>
+              </svg>
+            </span>
+          </label>
+          <span class="text-sm text-slate-400">
+            I agree to the <a class="text-primary hover:underline underline-offset-4" href="#">Terms</a> and <a
+              class="text-primary hover:underline underline-offset-4" href="#">Privacy Policy</a>
+          </span>
+        </div>
+        <!-- Action Button -->
+        <button
+          class="group relative w-full bg-primary hover:bg-emerald-400 text-background-dark font-bold py-5 rounded-lg transition-all duration-300 shadow-[0_0_30px_rgba(17,212,98,0.2)] flex items-center justify-center gap-2 overflow-hidden"
+          type="button">
+          <span class="z-10">Create Account</span>
+          <span
+            class="material-symbols-outlined z-10 transition-transform group-hover:translate-x-1">arrow_forward</span>
+          <div
+            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          </div>
+        </button>
+      </form>
+      <!-- Footer Link -->
+      <div class="mt-8 text-center">
+        <p class="text-slate-500">
+          Already have an account?
+          <a class="text-primary font-semibold hover:underline underline-offset-4 ml-1" href="#">Sign In</a>
+        </p>
+      </div>
+    </div>
+    <!-- Decorative Image Elements -->
+    <div class="mt-12 grid grid-cols-3 gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+      <div class="h-24 rounded-lg bg-cover bg-center border border-white/5"
+        data-alt="Modern geometric garden landscape design"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZem898hETGcg106mnWxYuUWh7DiLKv96nMPqNf_ysUitha9-tAKAxA3LZ3dvK9ouaM9CE9Etu1q6IBwrIXLYPxfXwO07pNKn4alOMLS5hOe-EYTHDLYLlXeg8WSgIaIjsdQBqYi7g6-nsW-Q0Dh5dlms60vkI1vwpB1nrXemE2YAWaIdfLYahQL3o0cghtjv5mmDiDYYw4HZYQHD2_zro8inlaEXWliJJ5HMxJ4eWoCywLfPMKdwRBO1DKwWBS-igL_b9mZd7e4U')">
+      </div>
+      <div class="h-24 rounded-lg bg-cover bg-center border border-white/5"
+        data-alt="Luxury pool side with minimalist green foliage"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcp1LbFurOJ_rWblfKJLiI0gTL3nHCLDCt0EBfb7OJOUkzn_kZ9pZvfI4HDLtG-t1D7pyhDj8_CgIFznEgpNnUZ3bKgPBHAHlYfzx1dzr-WXefePXjcNmzRK8iY6nAqrbD1c6noem7uxZsP31lIjQ7ZtT5L8bP2wdoiPUI7NBeubl0HVtV5_StgskolStRQgxKT22R-5wiFVDtaJPifUBuTqtIRn5N4rDBH9Y5lytlFpPkCSG63mBRmVysDXBufkTXNCy5391qTlY')">
+      </div>
+      <div class="h-24 rounded-lg bg-cover bg-center border border-white/5"
+        data-alt="Zen garden path with premium natural stone"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcE3nfvkW6Q-0FDTRrZM1zOTA1NfaGKx_hp9jMuQjlF4zj3Crkr7eNTZUqHJ8VU4KeOFvXBMtKdYSijz63E2y2ww5VyByuLRvy1tTKTSs3-WWSax9xuy8SrtOE7OpgCJTqMn3aY4q_RcsII3RkxJ_VezoxjjieaTdmA2hn9ueDCKMf7Y-NKJvXJGG0Zi2twSzMnWMGa92UHg4GNk6fwLxXb_KcIV_ZOVSzmG-YCd_zC69FRjwlbD4dXOtLWFxyDSN5Y-_mGw1yEa4')">
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -156,12 +156,21 @@ function luxe_landscape_scripts() {
 		wp_enqueue_script( 'luxe-carousel', $theme_uri . '/assets/js/carousel.js', array(), $theme_version, true );
 	}
 
-	// WooCommerce AJAX
+	// Auth JS (only on signin/signup pages)
+	if ( is_page_template( 'template-signin.php' ) || is_page_template( 'template-signup.php' ) ) {
+		$auth_version = filemtime( get_template_directory() . '/assets/js/auth.js' );
+		wp_enqueue_script( 'luxe-auth', $theme_uri . '/assets/js/auth.js', array(), $auth_version, true );
+	}
+
+	// WooCommerce AJAX & Auth Data
 	if ( class_exists( 'WooCommerce' ) ) {
-		wp_localize_script( 'luxe-header', 'luxeAjax', array(
+		$ajax_data = array(
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'luxe_nonce' ),
-		) );
+			'isRTL'   => is_rtl(),
+		);
+		wp_localize_script( 'luxe-header', 'luxeAjax', $ajax_data );
+		wp_localize_script( 'luxe-auth', 'luxeAjax', $ajax_data );
 	}
 }
 
@@ -228,5 +237,30 @@ class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = null ) {}
 	public function end_lvl( &$output, $depth = 0, $args = null ) {}
-	public function end_el( &$output, $item, $depth = 0, $args = null ) {}
+}
+
+/* ============================================
+   ROUTE PROTECTION & REDIRECTS
+   ============================================ */
+add_action( 'template_redirect', 'luxe_landscape_protect_routes' );
+function luxe_landscape_protect_routes() {
+	// If the user IS logged in...
+	if ( is_user_logged_in() ) {
+		// Prevent them from visiting the custom Sign In or Sign Up pages
+		if ( is_page_template( 'template-signin.php' ) || is_page_template( 'template-signup.php' ) || is_page( 'sign-in' ) || is_page( 'sign-up' ) ) {
+			$redirect = class_exists( 'WooCommerce' ) ? wc_get_account_endpoint_url( 'dashboard' ) : home_url( '/' );
+			wp_safe_redirect( $redirect );
+			exit;
+		}
+	} 
+	// If the user IS NOT logged in (Guest)...
+	else {
+		if ( class_exists( 'WooCommerce' ) ) {
+			// Prevent them from visiting the My Account page
+			if ( is_account_page() ) {
+				wp_safe_redirect( home_url( '/sign-in' ) );
+				exit;
+			}
+		}
+	}
 }

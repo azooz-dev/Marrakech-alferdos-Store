@@ -4,58 +4,50 @@ description: How to build a WordPress/WooCommerce custom theme from a Stitch MCP
 
 # WordPress Theme from Stitch Design
 
-## Environment Rules (Laragon + WSL)
-- The shell is **WSL** — never use Windows commands (`copy`, `cmd.exe /c`, `move`). Use Unix equivalents (`cp`, `mv`) with `/mnt/c/` paths.
-- WordPress root is at `c:\laragon\www\custom-theme` (Windows) / `/mnt/c/laragon/www/custom-theme` (WSL).
-- Theme directory: `wp-content/themes/<theme-name>/`.
-- **WooCommerce is pre-installed** — always declare `add_theme_support('woocommerce')`.
+## Environment & Architecture
+- **Shell**: Use **WSL** (/mnt/c/...) for terminal commands.
+- **Modular Theme**: 
+  - Root files (`header.php`, `footer.php`, `front-page.php`) are **stubs**.
+  - Reusable layout parts in `layout/`.
+  - Main page templates in `pages/`.
+  - Assets in `assets/css/` and `assets/js/`, organized by functionality.
+- **WooCommerce**: Pre-installed. Use `theme/woocommerce/` for overrides.
+
+## Language Toggle & RTL (Arabic/English)
+- **Attribute Switching**: Use `dir="rtl"` and `lang="ar"` on the `<html>` tag via JS.
+- **Translation Hooks**: Use semantic CSS classes (e.g., `.hero-title`, `.b2b-cta`) as hooks for `lang-toggle.js`.
+- **Persistence**: Store `'lang'` in `localStorage`. Apply immediately in `header.php` to avoid flip.
+- **RTL Overrides**: Always enqueue `assets/css/rtl-overrides.css`. Scope with `[dir="rtl"]`.
+- **Carousel RTL**: Handle negative `scrollLeft` values in JS. Flip arrows with `transform: scaleX(-1)`.
+
+## Dark Mode Implementation
+- **Class Toggle**: Use `dark` class on `<html>`. 
+- **Persistence**: Store `'theme'` in `localStorage`.
+
+## Animation & GSAP
+- **GSAP Logic**: Keep in `assets/js/gsap-animations.js`. Use `ScrollTrigger` for scroll effects.
+- **Impact Counters**: Use `IntersectionObserver` in `assets/js/impact-counter.js`.
 
 ## Stitch MCP Extraction Workflow
 1. `mcp_StitchMCP_get_project` → get project metadata (colors, font, device type).
 2. `mcp_StitchMCP_list_screens` → list all screens and their IDs.
 3. `mcp_StitchMCP_get_screen` → for each screen, get the `htmlCode.downloadUrl`.
-4. Use `browser_subagent` to open the download URL and **extract the full raw HTML source** including all Tailwind classes, inline styles, and structure. The `read_url_content` tool only gives markdown summaries — it strips classes.
-5. Save the raw HTML to a reference file before starting conversion.
+4. Use `browser_subagent` to open the download URL and **extract the full raw HTML source** including all Tailwind classes.
+5. Save raw HTML to a reference file before conversion.
 
 ## Critical Design Fidelity Rules
-- **Never hallucinate UI elements.** Build exactly what's in the Stitch HTML.
-- **Check for interactive controls:** Carousels always need left/right navigation arrows. Check the Stitch source for `justify-between` in section headers — that indicates navigation buttons exist.
-- **Product cards in carousels:** Always use a FIXED width (e.g., `width: 280px; min-width: 280px; max-width: 280px;`), never just `min-width` alone — cards will expand to fill available space.
-- **Scroll containers for carousels:** Wrap in a positioning wrapper, use `scroll-behavior: smooth`, hide scrollbar with `scrollbar-width: none` + `::-webkit-scrollbar { display: none }`.
-
-## WordPress Theme File Checklist
-// turbo-all
-
-1. `style.css` — Must start with theme header comment block. Convert Tailwind to vanilla CSS custom properties.
-2. `functions.php` — Must include:
-   - `add_theme_support('title-tag', 'post-thumbnails', 'custom-logo', 'html5', 'woocommerce')`
-   - `wp_enqueue_style` / `wp_enqueue_script` (never hardcode `<link>` or `<script>`)
-   - `register_nav_menus` for all menu locations
-   - WooCommerce cart fragment filter for AJAX cart count
-   - Remove default WC wrappers and sidebar
-3. `header.php` — Must include: `<!DOCTYPE html>`, `language_attributes()`, `wp_head()`, `body_class()`, `wp_body_open()`
-4. `footer.php` — Must include `wp_footer()` before `</body></html>`
-5. `front-page.php` — Homepage template with `get_header()` / `get_footer()`
-6. `index.php` — Fallback with basic WordPress loop
+- **Pixel-Perfect**: Build exactly what's in the Stitch HTML. No hallucinations.
+- **Product Cards**: Fixed widths for carousels (e.g., `width: 320px; min-width: 320px;`).
+- **Scroll Containers**: Use `scroll-behavior: smooth` and hide scrollbars.
 
 ## WooCommerce Override Rules
-- Place overrides in `theme/woocommerce/` directory.
-- `archive-product.php` — shop page (use `wc_get_template_part('content', 'product')` inside loop).
-- `content-product.php` — individual product card in loops.
-- `single-product.php` — product detail page.
-- `cart/cart.php` — cart page (preserve `wp_nonce_field` and all WC hooks).
-- Always calculate sale percentage dynamically: `round(((regular - sale) / regular) * 100)`.
-- Always provide **static fallback data** for when WooCommerce isn't active.
-
-## CSS Conversion: Tailwind → Vanilla
-- Extract Tailwind config from `<script id="tailwind-config">` in Stitch HTML.
-- Map `colors`, `fontFamily`, `borderRadius` to CSS custom properties in `:root`.
-- Translate utility classes to semantic class names (e.g., `.glass`, `.bento-gradient`, `.product-card`).
-- Always include responsive breakpoints: `768px` (tablet), `1024px` (desktop), `1280px` (large).
+- Place overrides in `theme/woocommerce/`.
+- Always provide **static fallback data** in PHP for when WC is inactive.
+- Calculate sale percentages dynamically: `round(((reg - sale) / reg) * 100)`.
 
 ## Common Pitfalls to Avoid
-1. **Don't use `min-width` alone on flex children** — they'll expand. Always pair with `width` and `max-width`.
-2. **Don't forget the `</div>` for wrapper elements** — when adding a scroll wrapper, count open/close tags.
-3. **Don't hardcode image URLs in final templates** — use `get_the_post_thumbnail_url()`, `wc_placeholder_img_src()`.
-4. **Don't skip `esc_url()`, `esc_html()`, `esc_attr()`** — WordPress coding standards require escaping.
-5. **Don't forget `wp_reset_postdata()`** after custom WP_Query loops.
+1. **Don't use `min-width` alone on flex children** — they'll expand.
+2. **Don't forget placeholders** for missing images.
+3. **Escaping**: Always use `esc_html()`, `esc_url()`, and `esc_attr()`.
+4. **RTL Logic**: Don't load RTL CSS conditionally; always load it for the JS toggle.
+5. **Clean Code**: Remove unused scripts and old static HTML once converted.
