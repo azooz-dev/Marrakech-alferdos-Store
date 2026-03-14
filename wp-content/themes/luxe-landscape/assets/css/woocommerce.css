@@ -1,0 +1,99 @@
+/**
+ * WooCommerce CSS
+ *
+ * Custom styles for WooCommerce template overrides.
+ * Only styles that Tailwind utility classes can't handle.
+ *
+ * @package Luxe_Landscape
+ */
+
+/* ============================================
+   SHOP ARCHIVE
+   ============================================ */
+.wc-products-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 2rem;
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 2rem 1.5rem 6rem;
+}
+
+@media (min-width: 768px) {
+	.wc-products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+	.wc-products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+	.wc-products-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================
+   SINGLE PRODUCT
+   ============================================ */
+.wc-single-product {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 8rem 1.5rem 6rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+	.wc-single-product { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   CART PAGE
+   ============================================ */
+.wc-cart-section {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 8rem 1.5rem 6rem;
+}
+
+.wc-cart-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.wc-cart-table th {
+	text-align: left;
+	padding: 1rem;
+	font-weight: 700;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.wc-cart-table td {
+	padding: 1.5rem 1rem;
+	vertical-align: middle;
+}
+
+/* ============================================
+   WC NOTICES
+   ============================================ */
+.woocommerce-message,
+.woocommerce-info {
+	background-color: rgba(17, 212, 98, 0.1);
+	border-left: 4px solid #11d462;
+	padding: 1rem 1.5rem;
+	border-radius: 0 0.5rem 0.5rem 0;
+	margin-bottom: 2rem;
+	font-weight: 600;
+}
+
+.woocommerce-error {
+	background-color: rgba(239, 68, 68, 0.1);
+	border-left: 4px solid #ef4444;
+	padding: 1rem 1.5rem;
+	border-radius: 0 0.5rem 0.5rem 0;
+	margin-bottom: 2rem;
+}
+
+.woocommerce-error li {
+	list-style: none;
+}

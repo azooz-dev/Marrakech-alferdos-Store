@@ -1,0 +1,33 @@
+/**
+ * RTL Overrides
+ *
+ * Directional fixes for RTL (Arabic) layout
+ * that Tailwind logical properties don't handle.
+ *
+ * @package Luxe_Landscape
+ */
+
+/* Flip arrow icons for RTL */
+[dir="rtl"] .section-link .material-symbols-outlined,
+[dir="rtl"] #trending-prev .material-symbols-outlined,
+[dir="rtl"] #trending-next .material-symbols-outlined {
+	transform: scaleX(-1);
+}
+
+/* Cart badge positioning in RTL */
+[dir="rtl"] .luxe-cart-count {
+	right: auto;
+	left: -0.25rem;
+}
+
+/* WooCommerce notices border direction */
+[dir="rtl"] .woocommerce-message,
+[dir="rtl"] .woocommerce-info {
+	border-left: none;
+	border-right: 4px solid #11d462;
+}
+
+[dir="rtl"] .woocommerce-error {
+	border-left: none;
+	border-right: 4px solid #ef4444;
+}

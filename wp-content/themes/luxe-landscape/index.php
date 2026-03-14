@@ -1,36 +1,37 @@
 <?php
 /**
- * Main Index Template (Fallback)
+ * Index Template (Fallback)
  *
  * @package Luxe_Landscape
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
-get_header();
+luxe_landscape_get_header();
 ?>
 
-<main class="wc-main-content" style="padding-top: 8rem; min-height: 60vh;">
-    <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;">
-        <?php if ( have_posts() ) : ?>
-            <?php while ( have_posts() ) : the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </h2>
-                    <div style="color: var(--slate-600); line-height: 1.7;">
-                        <?php the_excerpt(); ?>
-                    </div>
-                </article>
-            <?php endwhile; ?>
-
-            <?php the_posts_navigation(); ?>
-        <?php else : ?>
-            <p><?php esc_html_e( 'No content found.', 'luxe-landscape' ); ?></p>
-        <?php endif; ?>
-    </div>
+<main class="max-w-7xl mx-auto px-6 py-32">
+	<?php if ( have_posts() ) : ?>
+		<div class="grid gap-8">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<article <?php post_class( 'bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-sm' ); ?>>
+					<h2 class="text-2xl font-bold mb-4">
+						<a href="<?php the_permalink(); ?>" class="hover:text-primary transition-colors"><?php the_title(); ?></a>
+					</h2>
+					<div class="text-slate-600 dark:text-slate-400">
+						<?php the_excerpt(); ?>
+					</div>
+				</article>
+			<?php endwhile; ?>
+		</div>
+		<div class="mt-12">
+			<?php the_posts_pagination(); ?>
+		</div>
+	<?php else : ?>
+		<p class="text-slate-500 text-center text-xl"><?php esc_html_e( 'No posts found.', 'luxe-landscape' ); ?></p>
+	<?php endif; ?>
 </main>
 
-<?php get_footer(); ?>
+<?php luxe_landscape_get_footer(); ?>

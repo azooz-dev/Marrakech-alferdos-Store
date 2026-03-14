@@ -3,202 +3,230 @@
  * Luxe Landscape Theme Functions
  *
  * @package Luxe_Landscape
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
-define( 'LUXE_LANDSCAPE_VERSION', '1.0.0' );
-define( 'LUXE_LANDSCAPE_DIR', get_template_directory() );
-define( 'LUXE_LANDSCAPE_URI', get_template_directory_uri() );
-
-/**
- * Theme Setup
- */
-function luxe_landscape_setup() {
-    // Let WordPress manage the document title
-    add_theme_support( 'title-tag' );
-
-    // Enable featured images
-    add_theme_support( 'post-thumbnails' );
-
-    // Custom logo
-    add_theme_support( 'custom-logo', array(
-        'height'      => 60,
-        'width'       => 200,
-        'flex-height' => true,
-        'flex-width'  => true,
-    ) );
-
-    // HTML5 markup
-    add_theme_support( 'html5', array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'style',
-        'script',
-    ) );
-
-    // WooCommerce Support
-    add_theme_support( 'woocommerce' );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
-
-    // Register Navigation Menus
-    register_nav_menus( array(
-        'primary'            => __( 'Primary Menu', 'luxe-landscape' ),
-        'footer-collections' => __( 'Footer Collections', 'luxe-landscape' ),
-        'footer-support'     => __( 'Footer Support', 'luxe-landscape' ),
-    ) );
-
-    // Content width
-    if ( ! isset( $content_width ) ) {
-        $content_width = 1280;
-    }
-}
+/* ============================================
+   THEME SETUP
+   ============================================ */
 add_action( 'after_setup_theme', 'luxe_landscape_setup' );
+function luxe_landscape_setup() {
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'custom-logo' );
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
 
-/**
- * Enqueue Styles and Scripts
- */
-function luxe_landscape_scripts() {
-    // Google Fonts - Space Grotesk
-    wp_enqueue_style(
-        'luxe-landscape-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap',
-        array(),
-        null
-    );
+	// WooCommerce
+	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 
-    // Material Symbols Outlined
-    wp_enqueue_style(
-        'luxe-landscape-material-symbols',
-        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
-        array(),
-        null
-    );
-
-    // Main Stylesheet
-    wp_enqueue_style(
-        'luxe-landscape-style',
-        get_stylesheet_uri(),
-        array( 'luxe-landscape-google-fonts', 'luxe-landscape-material-symbols' ),
-        filemtime( get_stylesheet_directory() . '/style.css' )
-    );
-
-    // Main JavaScript
-    wp_enqueue_script(
-        'luxe-landscape-main',
-        LUXE_LANDSCAPE_URI . '/assets/js/main.js',
-        array(),
-        filemtime( LUXE_LANDSCAPE_DIR . '/assets/js/main.js' ),
-        true
-    );
-
-    // Pass WooCommerce AJAX URL if WooCommerce is active
-    if ( class_exists( 'WooCommerce' ) ) {
-        wp_localize_script( 'luxe-landscape-main', 'luxeLandscape', array(
-            'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
-            'cartUrl'  => wc_get_cart_url(),
-            'shopUrl'  => wc_get_page_permalink( 'shop' ),
-        ) );
-    }
+	// Navigation menus
+	register_nav_menus( array(
+		'primary'            => __( 'Primary Navigation', 'luxe-landscape' ),
+		'footer-collections' => __( 'Footer Collections', 'luxe-landscape' ),
+		'footer-support'     => __( 'Footer Support', 'luxe-landscape' ),
+	) );
 }
+
+/* ============================================
+   CUSTOM HEADER/FOOTER FROM layout/ DIRECTORY
+   ============================================ */
+function luxe_landscape_get_header() {
+	load_template( get_template_directory() . '/layout/header.php' );
+}
+
+function luxe_landscape_get_footer() {
+	load_template( get_template_directory() . '/layout/footer.php' );
+}
+
+/* ============================================
+   TAILWIND CSS CONFIG (Inline in <head>)
+   ============================================ */
+add_action( 'wp_head', 'luxe_landscape_tailwind_config', 1 );
+function luxe_landscape_tailwind_config() {
+	?>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<script>
+		tailwind.config = {
+			darkMode: "class",
+			theme: {
+				extend: {
+					colors: {
+						"primary": "#11d462",
+						"background-light": "#f6f8f7",
+						"background-dark": "#062a1e",
+						"neutral-charcoal": "#1a1c1b",
+						"alabaster": "#f2f2f2"
+					},
+					fontFamily: {
+						"display": ["Space Grotesk", "IBM Plex Sans Arabic", "sans-serif"]
+					},
+					borderRadius: {
+						"DEFAULT": "0.5rem",
+						"lg": "1rem",
+						"xl": "1.5rem",
+						"full": "9999px"
+					},
+				},
+			},
+		}
+	</script>
+	<?php
+}
+
+/* ============================================
+   ENQUEUE STYLES
+   ============================================ */
+add_action( 'wp_enqueue_scripts', 'luxe_landscape_styles' );
+function luxe_landscape_styles() {
+	$theme_version = wp_get_theme()->get( 'Version' );
+	$theme_uri     = get_template_directory_uri();
+
+	// Google Fonts
+	wp_enqueue_style(
+		'luxe-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Outfit:wght@300;400;500&display=swap',
+		array(),
+		null
+	);
+
+	// Material Symbols
+	wp_enqueue_style(
+		'luxe-material-symbols',
+		'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
+		array(),
+		null
+	);
+
+	// Theme CSS — effects (global)
+	wp_enqueue_style(
+		'luxe-effects',
+		$theme_uri . '/assets/css/effects.css',
+		array(),
+		$theme_version
+	);
+
+	// WooCommerce CSS — only on WC pages
+	if ( class_exists( 'WooCommerce' ) ) {
+		wp_enqueue_style(
+			'luxe-woocommerce',
+			$theme_uri . '/assets/css/woocommerce.css',
+			array(),
+			$theme_version
+		);
+	}
+
+	// RTL overrides — load always but scoped with [dir="rtl"] in CSS
+	wp_enqueue_style(
+		'luxe-rtl',
+		$theme_uri . '/assets/css/rtl-overrides.css',
+		array(),
+		$theme_version
+	);
+}
+
+/* ============================================
+   ENQUEUE SCRIPTS
+   ============================================ */
 add_action( 'wp_enqueue_scripts', 'luxe_landscape_scripts' );
+function luxe_landscape_scripts() {
+	$theme_version = wp_get_theme()->get( 'Version' );
+	$theme_uri     = get_template_directory_uri();
 
-/**
- * Register Widget Areas
- */
-function luxe_landscape_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Footer Newsletter', 'luxe-landscape' ),
-        'id'            => 'footer-newsletter',
-        'description'   => __( 'Footer newsletter signup area.', 'luxe-landscape' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4 class="widget-title">',
-        'after_title'   => '</h4>',
-    ) );
-}
-add_action( 'widgets_init', 'luxe_landscape_widgets_init' );
+	// GSAP + ScrollTrigger (from CDN)
+	wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true );
+	wp_enqueue_script( 'gsap-scroll-trigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array( 'gsap' ), '3.12.2', true );
 
-/**
- * Custom Walker for Primary Navigation
- */
-class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu {
-    public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-        $output .= '<li>';
-        $atts = array(
-            'href'  => ! empty( $item->url ) ? $item->url : '',
-            'class' => 'text-sm font-semibold hover:text-primary transition-colors',
-        );
+	// Global JS
+	wp_enqueue_script( 'luxe-header', $theme_uri . '/assets/js/header.js', array(), $theme_version, true );
+	wp_enqueue_script( 'luxe-dark-mode', $theme_uri . '/assets/js/dark-mode.js', array(), $theme_version, true );
+	wp_enqueue_script( 'luxe-smooth-scroll', $theme_uri . '/assets/js/smooth-scroll.js', array(), $theme_version, true );
+	wp_enqueue_script( 'luxe-lang-toggle', $theme_uri . '/assets/js/lang-toggle.js', array(), $theme_version, true );
 
-        if ( $item->current ) {
-            $atts['class'] .= ' text-primary';
-        }
+	// Front page only JS
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'luxe-gsap-animations', $theme_uri . '/assets/js/gsap-animations.js', array( 'gsap', 'gsap-scroll-trigger' ), $theme_version, true );
+		wp_enqueue_script( 'luxe-impact-counter', $theme_uri . '/assets/js/impact-counter.js', array(), $theme_version, true );
+		wp_enqueue_script( 'luxe-carousel', $theme_uri . '/assets/js/carousel.js', array(), $theme_version, true );
+	}
 
-        $attributes = '';
-        foreach ( $atts as $attr => $value ) {
-            if ( ! empty( $value ) ) {
-                $attributes .= ' ' . $attr . '="' . esc_attr( $value ) . '"';
-            }
-        }
-
-        $output .= '<a' . $attributes . '>';
-        $output .= esc_html( $item->title );
-        $output .= '</a>';
-    }
+	// WooCommerce AJAX
+	if ( class_exists( 'WooCommerce' ) ) {
+		wp_localize_script( 'luxe-header', 'luxeAjax', array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'luxe_nonce' ),
+		) );
+	}
 }
 
-/**
- * WooCommerce Cart Fragments for AJAX cart count
- */
-function luxe_landscape_cart_count_fragment( $fragments ) {
-    ob_start();
-    ?>
-    <span class="cart-count" id="luxe-cart-count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
-    <?php
-    $fragments['.cart-count'] = ob_get_clean();
-    return $fragments;
+/* ============================================
+   DARK MODE: Add class to <html> tag
+   ============================================ */
+add_action( 'wp_head', 'luxe_landscape_dark_mode_init', 0 );
+function luxe_landscape_dark_mode_init() {
+	?>
+	<script>
+		(function(){
+			var theme = localStorage.getItem('theme');
+			if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			}
+		})();
+	</script>
+	<?php
 }
+
+/* ============================================
+   WOOCOMMERCE CUSTOMIZATIONS
+   ============================================ */
 if ( class_exists( 'WooCommerce' ) ) {
-    add_filter( 'woocommerce_add_to_cart_fragments', 'luxe_landscape_cart_count_fragment' );
+	// Remove default WC wrappers
+	remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+
+	// Custom wrappers
+	add_action( 'woocommerce_before_main_content', function () {
+		echo '<main class="wc-main">';
+	}, 10 );
+	add_action( 'woocommerce_after_main_content', function () {
+		echo '</main>';
+	}, 10 );
+
+	// Products per row + per page
+	add_filter( 'loop_shop_columns', function () { return 4; } );
+	add_filter( 'loop_shop_per_page', function () { return 12; } );
+
+	// Remove sidebar
+	remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 }
 
-/**
- * Remove default WooCommerce wrapper
- */
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-
-function luxe_landscape_wc_wrapper_start() {
-    echo '<main class="wc-main-content">';
+/* ============================================
+   AJAX CART FRAGMENT (Dynamic cart count)
+   ============================================ */
+add_filter( 'woocommerce_add_to_cart_fragments', 'luxe_landscape_cart_count_fragment' );
+function luxe_landscape_cart_count_fragment( $fragments ) {
+	if ( class_exists( 'WooCommerce' ) ) {
+		$count = WC()->cart->get_cart_contents_count();
+		$fragments['.luxe-cart-count'] = '<span class="luxe-cart-count absolute -top-1 -right-1 bg-primary text-[10px] font-bold text-white size-4 flex items-center justify-center rounded-full">' . esc_html( $count ) . '</span>';
+	}
+	return $fragments;
 }
 
-function luxe_landscape_wc_wrapper_end() {
-    echo '</main>';
+/* ============================================
+   CUSTOM NAV WALKER
+   ============================================ */
+class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu {
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		$output .= '<a class="text-sm font-semibold hover:text-primary transition-colors" href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>';
+	}
+
+	public function start_lvl( &$output, $depth = 0, $args = null ) {}
+	public function end_lvl( &$output, $depth = 0, $args = null ) {}
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {}
 }
-
-add_action( 'woocommerce_before_main_content', 'luxe_landscape_wc_wrapper_start', 10 );
-add_action( 'woocommerce_after_main_content', 'luxe_landscape_wc_wrapper_end', 10 );
-
-/**
- * Remove default WooCommerce sidebar
- */
-remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-
-/**
- * Customize products per row and per page
- */
-add_filter( 'loop_shop_columns', function() {
-    return 4;
-} );
-
-add_filter( 'loop_shop_per_page', function() {
-    return 12;
-} );

@@ -1,0 +1,96 @@
+/**
+ * Effects CSS
+ *
+ * Custom CSS effects that Tailwind utility classes can't handle:
+ * glassmorphism, shimmer animation, bento gradient, featured card hover.
+ *
+ * @package Luxe_Landscape
+ */
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+.glass {
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+	background: rgba(6, 42, 30, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   BENTO GRADIENT OVERLAY
+   ============================================ */
+.bento-gradient {
+	background: linear-gradient(0deg, rgba(16, 34, 24, 0.8) 0%, rgba(16, 34, 24, 0) 60%);
+}
+
+/* ============================================
+   GLASS SHIMMER EFFECT
+   ============================================ */
+.glass-shimmer {
+	position: relative;
+	overflow: hidden;
+}
+
+.glass-shimmer::after {
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+	transform: rotate(45deg);
+	animation: shimmer 10s infinite linear;
+	pointer-events: none;
+}
+
+@keyframes shimmer {
+	0% { transform: translate(-30%, -30%) rotate(45deg); }
+	100% { transform: translate(30%, 30%) rotate(45deg); }
+}
+
+/* ============================================
+   FEATURED CARD HOVER
+   ============================================ */
+.featured-card-hover {
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featured-card-hover:hover {
+	transform: scale(1.02) translateY(-5px);
+	box-shadow: 0 30px 60px -12px rgba(17, 212, 98, 0.25);
+}
+
+.featured-card-hover:hover img {
+	transform: scale(1.1);
+}
+
+.featured-card-hover img {
+	transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   HERO ANIMATE-IN (Initial state for GSAP)
+   ============================================ */
+.hero-animate-in {
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+/* ============================================
+   HIDE SCROLLBAR
+   ============================================ */
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
