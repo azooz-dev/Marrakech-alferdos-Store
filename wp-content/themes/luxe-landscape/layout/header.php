@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'theme_location' => 'primary',
 						'container'      => false,
 						'items_wrap'     => '%3$s',
-						'walker'         => new Luxe_Landscape_Nav_Walker(),
+						'walker'         => new \Luxe_Landscape_Nav_Walker(),
 					) );
 				} else {
 					// Fallback navigation

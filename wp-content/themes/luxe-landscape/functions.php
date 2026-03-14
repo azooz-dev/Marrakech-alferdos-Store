@@ -48,37 +48,7 @@ function luxe_landscape_get_footer() {
 /* ============================================
    TAILWIND CSS CONFIG (Inline in <head>)
    ============================================ */
-add_action( 'wp_head', 'luxe_landscape_tailwind_config', 1 );
-function luxe_landscape_tailwind_config() {
-	?>
-	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-	<script>
-		tailwind.config = {
-			darkMode: "class",
-			theme: {
-				extend: {
-					colors: {
-						"primary": "#11d462",
-						"background-light": "#f6f8f7",
-						"background-dark": "#062a1e",
-						"neutral-charcoal": "#1a1c1b",
-						"alabaster": "#f2f2f2"
-					},
-					fontFamily: {
-						"display": ["Space Grotesk", "IBM Plex Sans Arabic", "sans-serif"]
-					},
-					borderRadius: {
-						"DEFAULT": "0.5rem",
-						"lg": "1rem",
-						"xl": "1.5rem",
-						"full": "9999px"
-					},
-				},
-			},
-		}
-	</script>
-	<?php
-}
+// Note: Tailwind Play CDN removed. Configuration is now in tailwind.config.js and compiled via npm.
 
 /* ============================================
    ENQUEUE STYLES
@@ -102,6 +72,16 @@ function luxe_landscape_styles() {
 		'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
 		array(),
 		null
+	);
+
+	// Tailwind CSS (Compiled)
+	$tailwind_css_path = get_template_directory() . '/assets/css/output.css';
+	$tailwind_css_ver  = file_exists( $tailwind_css_path ) ? filemtime( $tailwind_css_path ) : $theme_version;
+	wp_enqueue_style(
+		'luxe-tailwind',
+		$theme_uri . '/assets/css/output.css',
+		array(),
+		$tailwind_css_ver
 	);
 
 	// Theme CSS — effects (global)
