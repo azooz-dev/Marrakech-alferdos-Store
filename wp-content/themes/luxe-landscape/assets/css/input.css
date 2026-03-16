@@ -100,44 +100,38 @@
 	@apply z-10;
 	z-index: 10 !important;
 }
-.woocommerce-custom-auth-wrapper .iti input[type="text"],
-.woocommerce-custom-auth-wrapper .iti input[type="tel"] {
-	@apply pl-28;
-	padding-left: 105px !important;
-}
-/* Style the dropdown itself */
-.woocommerce-custom-auth-wrapper .iti__country-list {
-	@apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl dark:shadow-none text-slate-700 dark:text-slate-300;
-}
-.woocommerce-custom-auth-wrapper .iti__country.iti__highlight {
-	@apply bg-slate-50 dark:bg-slate-700/50;
-}
-.woocommerce-custom-auth-wrapper .iti__selected-flag {
-	@apply bg-transparent dark:bg-transparent border-r border-slate-300 dark:border-emerald-800/50 rounded-l-xl px-5 flex items-center justify-center;
-	border-right-width: 1px !important;
-	border-right-style: solid !important;
+/* =========================================================
+   Xootix OTP Login & Register UI Overrides
+   ========================================================= */
+
+/* The Phone Country Code Dropdown Container */
+.woocommerce-custom-auth-wrapper .xoo-ml-country-code {
+	@apply !bg-transparent !border-slate-200 dark:!border-slate-700 !text-slate-700 dark:!text-slate-300 !rounded-lg;
 }
 
-.woocommerce-custom-auth-wrapper
-	.woocommerce-form
-	.form-row-wide
-	.iti--show-flags
-	.iti__country-container
-	.iti__selected-country
-	.iti__selected-country-primary {
-	display: none !important;
+/* Base Inputs injected by Xootix */
+.woocommerce-custom-auth-wrapper input.xoo-ml-phone-input,
+.woocommerce-custom-auth-wrapper .xoo-ml-form input[type="text"],
+.woocommerce-custom-auth-wrapper .xoo-ml-form input[type="email"],
+.woocommerce-custom-auth-wrapper .xoo-ml-form input[type="tel"] {
+	@apply !w-full !bg-white dark:!bg-slate-800 !border !border-slate-200 dark:!border-slate-700 !rounded-xl !px-4 !py-3 !text-sm focus:!border-primary focus:!ring-1 focus:!ring-primary !outline-none !transition-all dark:!text-white;
 }
 
-.woocommerce-custom-auth-wrapper .iti__selected-dial-code {
-	@apply ml-0 text-slate-900 dark:text-white font-medium text-base;
+/* "Login with OTP" / "Send OTP" Buttons */
+.woocommerce-custom-auth-wrapper .xoo-ml-btn,
+.woocommerce-custom-auth-wrapper .xoo-ml-submit-btn,
+.woocommerce-custom-auth-wrapper .xoo-ml-resend-otp {
+	@apply !w-full !py-3.5 !bg-primary !text-slate-900 !font-bold !rounded-xl hover:!bg-primary/90 !transition-all !text-sm !uppercase !tracking-wider !block !text-center !mt-4 !border-none !shadow-lg;
 }
 
-/* miniOrange OTP Field Messages */
-.woocommerce-custom-auth-wrapper .mo_customer_validation-message {
-	@apply text-sm mt-2 text-emerald-500;
+/* OTP inline inputs (the 4 or 6 digit squares) */
+.woocommerce-custom-auth-wrapper .xoo-ml-otp-input {
+	@apply !h-12 !w-12 !border !border-slate-200 dark:!border-slate-700 !bg-white dark:!bg-slate-800 !rounded-lg !text-lg !text-center !font-bold focus:!border-primary focus:!ring-1 focus:!ring-primary !mx-1 dark:!text-white;
 }
-.woocommerce-custom-auth-wrapper #mo_message {
-	@apply text-red-500 dark:text-red-400 bg-red-500/10 border-red-500/20 p-3 rounded-lg text-sm mb-4;
+
+/* Plugin specific typography and labels */
+.woocommerce-custom-auth-wrapper .xoo-ml-form label {
+	@apply !text-sm !font-bold !text-slate-700 dark:!text-slate-300 !mb-2 !block;
 }
 
 /* Header Responsive Fixes */

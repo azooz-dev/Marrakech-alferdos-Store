@@ -30,9 +30,9 @@ if ( is_user_logged_in() ) {
 
 	<?php echo ( $message ) ? wpautop( wptexturize( $message ) ) : ''; // @codingStandardsIgnoreLine ?>
 
-	<p class="form-row form-row-wide">
-		<label for="phone" class="auth-label-phone"><?php esc_html_e( 'Phone Number', 'woocommerce' ); ?>&nbsp;</label>
-		<input type="tel" class="input-text" name="username" id="phone" autocomplete="tel" required aria-required="true" dir="ltr" />
+	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+		<label for="username"><?php esc_html_e( 'Username or email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" />
 	</p>
 	<div class="clear"></div>
 

@@ -123,6 +123,11 @@
 		'.product-spec-label-2': { en: 'Material', ar: 'المادة' },
 		'.product-spec-label-3': { en: 'Weight', ar: 'الوزن' },
 		'.product-spec-label-4': { en: 'Quality', ar: 'الجودة' },
+
+		// Xootix Auth
+		'.auth-btn-login-text': { en: 'Login', ar: 'تسجيل الدخول' },
+		'.auth-label-phone-text': { en: 'Phone', ar: 'رقم الهاتف' },
+		'.auth-link-change': { en: 'Change?', ar: 'تغيير؟' },
 	};
 
 	/**
