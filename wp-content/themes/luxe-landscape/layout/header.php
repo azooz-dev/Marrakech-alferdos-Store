@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<a class="text-sm font-semibold hover:text-primary transition-colors nav-home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'luxe-landscape' ); ?></a>
 					<a class="text-sm font-semibold hover:text-primary transition-colors nav-collections" href="<?php echo class_exists( 'WooCommerce' ) ? esc_url( wc_get_page_permalink( 'shop' ) ) : '#'; ?>"><?php esc_html_e( 'Collections', 'luxe-landscape' ); ?></a>
 					<a class="text-sm font-semibold hover:text-primary transition-colors nav-wholesale" href="#b2b-section"><?php esc_html_e( 'Wholesale', 'luxe-landscape' ); ?></a>
-					<a class="text-sm font-semibold hover:text-primary transition-colors nav-projects" href="<?php echo esc_url( site_url( '/projects' ) ); ?>"><?php esc_html_e( 'Projects', 'luxe-landscape' ); ?></a>
+					<a class="text-sm font-semibold hover:text-primary transition-colors nav-products" href="<?php echo esc_url( site_url( '/products' ) ); ?>"><?php esc_html_e( 'Products', 'luxe-landscape' ); ?></a>
 					<?php
 				}
 				?>
@@ -111,7 +111,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'luxe-landscape' ); ?></a>
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="<?php echo class_exists( 'WooCommerce' ) ? esc_url( wc_get_page_permalink( 'shop' ) ) : '#'; ?>"><?php esc_html_e( 'Collections', 'luxe-landscape' ); ?></a>
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="#b2b-section"><?php esc_html_e( 'Wholesale', 'luxe-landscape' ); ?></a>
-	<a class="text-2xl font-bold hover:text-primary transition-colors" href="<?php echo esc_url( site_url( '/projects' ) ); ?>"><?php esc_html_e( 'Projects', 'luxe-landscape' ); ?></a>
+	<a class="text-2xl font-bold hover:text-primary transition-colors" href="<?php echo esc_url( site_url( '/products' ) ); ?>"><?php esc_html_e( 'Products', 'luxe-landscape' ); ?></a>
 	<!-- Mobile Utilities -->
 	<div class="flex items-center gap-6 mt-4">
 		<!-- Mobile Language Toggle -->

@@ -28,7 +28,7 @@
 		'.nav-home': { en: 'Home', ar: 'الرئيسية' },
 		'.nav-collections': { en: 'Collections', ar: 'المجموعات' },
 		'.nav-wholesale': { en: 'Wholesale', ar: 'الجملة' },
-		'.nav-projects': { en: 'Projects', ar: 'المشاريع' },
+		'.nav-products': { en: 'Products', ar: 'المنتجات' },
 
 		// Hero
 		'.hero-badge-text': { en: 'DIRECT FROM MANUFACTURER', ar: 'مباشرة من المصنع' },

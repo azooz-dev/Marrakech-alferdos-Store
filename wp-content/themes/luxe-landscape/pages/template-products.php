@@ -1,9 +1,9 @@
 <?php
 /**
- * Projects Page Layout
+ * products Page Layout
  *
  * Product listing page with sidebar filters, hero banner, and product grid.
- * Converted from Stitch design (Projects.html).
+ * Converted from Stitch design (products.html).
  *
  * @package Luxe_Landscape
  */
@@ -96,7 +96,7 @@ $fallback_products = array(
 ?>
 
 <!-- ====================================================
-     PROJECTS PAGE MAIN CONTENT
+     products PAGE MAIN CONTENT
      ==================================================== -->
 <main class="max-w-7xl mx-auto px-6 lg:px-12 py-8 mt-24">
 	<div class="flex flex-col lg:flex-row gap-10">
@@ -107,13 +107,13 @@ $fallback_products = array(
 		<aside class="w-full lg:w-64 flex-shrink-0">
 			<div class="sticky top-28 space-y-8">
 				<div class="flex items-center justify-between">
-					<h2 class="font-display text-xl font-bold projects-filter-title"><?php esc_html_e( 'Filters', 'luxe-landscape' ); ?></h2>
+					<h2 class="font-display text-xl font-bold products-filter-title"><?php esc_html_e( 'Filters', 'luxe-landscape' ); ?></h2>
 					<span class="material-symbols-outlined cursor-pointer lg:hidden">tune</span>
 				</div>
 
 				<!-- Categories -->
 				<div class="space-y-4">
-					<p class="text-xs font-bold uppercase tracking-widest text-primary/60 projects-cat-label"><?php esc_html_e( 'Categories', 'luxe-landscape' ); ?></p>
+					<p class="text-xs font-bold uppercase tracking-widest text-primary/60 products-cat-label"><?php esc_html_e( 'Categories', 'luxe-landscape' ); ?></p>
 					<nav class="space-y-1">
 						<?php
 						$use_wc_cats = ! empty( $categories ) && ! is_wp_error( $categories );
@@ -150,9 +150,9 @@ $fallback_products = array(
 				<!-- Bespoke Design CTA -->
 				<div class="pt-4">
 					<div class="bg-primary/5 dark:bg-primary/10 p-6 rounded-2xl border border-primary/10">
-						<p class="text-sm font-bold mb-2 projects-cta-title"><?php esc_html_e( 'Bespoke Design', 'luxe-landscape' ); ?></p>
-						<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4 projects-cta-desc"><?php esc_html_e( 'Request a personalized landscape consultation with our lead designers.', 'luxe-landscape' ); ?></p>
-						<button class="w-full py-2 bg-primary text-slate-900 text-xs font-bold rounded-lg hover:bg-primary/90 transition-all uppercase tracking-wider projects-cta-btn"><?php esc_html_e( 'Book Now', 'luxe-landscape' ); ?></button>
+						<p class="text-sm font-bold mb-2 products-cta-title"><?php esc_html_e( 'Bespoke Design', 'luxe-landscape' ); ?></p>
+						<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4 products-cta-desc"><?php esc_html_e( 'Request a personalized landscape consultation with our lead designers.', 'luxe-landscape' ); ?></p>
+						<button class="w-full py-2 bg-primary text-slate-900 text-xs font-bold rounded-lg hover:bg-primary/90 transition-all uppercase tracking-wider products-cta-btn"><?php esc_html_e( 'Book Now', 'luxe-landscape' ); ?></button>
 					</div>
 				</div>
 			</div>
@@ -170,9 +170,9 @@ $fallback_products = array(
 				</div>
 				<div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
 				<div class="absolute inset-0 flex flex-col justify-center px-12 space-y-4">
-					<span class="text-primary font-bold uppercase tracking-[0.3em] text-xs projects-hero-label"><?php esc_html_e( 'New Collection 2024', 'luxe-landscape' ); ?></span>
-					<h2 class="font-display text-4xl md:text-5xl font-bold text-white max-w-md projects-hero-title"><?php esc_html_e( 'Curated Outdoor Elegance', 'luxe-landscape' ); ?></h2>
-					<p class="text-white/80 max-w-xs text-sm projects-hero-desc"><?php esc_html_e( 'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.', 'luxe-landscape' ); ?></p>
+					<span class="text-primary font-bold uppercase tracking-[0.3em] text-xs products-hero-label"><?php esc_html_e( 'New Collection 2024', 'luxe-landscape' ); ?></span>
+					<h2 class="font-display text-4xl md:text-5xl font-bold text-white max-w-md products-hero-title"><?php esc_html_e( 'Curated Outdoor Elegance', 'luxe-landscape' ); ?></h2>
+					<p class="text-white/80 max-w-xs text-sm products-hero-desc"><?php esc_html_e( 'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.', 'luxe-landscape' ); ?></p>
 				</div>
 			</section>
 
@@ -181,16 +181,16 @@ $fallback_products = array(
 				<nav class="flex items-center gap-2 text-sm">
 					<a class="text-slate-400 hover:text-primary transition-colors" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'luxe-landscape' ); ?></a>
 					<span class="material-symbols-outlined text-[14px] text-slate-400">chevron_right</span>
-					<span class="text-slate-900 dark:text-white font-semibold"><?php esc_html_e( 'Projects', 'luxe-landscape' ); ?></span>
+					<span class="text-slate-900 dark:text-white font-semibold"><?php esc_html_e( 'products', 'luxe-landscape' ); ?></span>
 				</nav>
 				<div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 w-full sm:w-auto no-scrollbar">
-					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap projects-sort-btn">
+					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap products-sort-btn">
 						<?php esc_html_e( 'Sort by: Featured', 'luxe-landscape' ); ?> <span class="material-symbols-outlined text-[16px]">expand_more</span>
 					</button>
-					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap projects-avail-btn">
+					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap products-avail-btn">
 						<?php esc_html_e( 'Availability', 'luxe-landscape' ); ?> <span class="material-symbols-outlined text-[16px]">expand_more</span>
 					</button>
-					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap projects-eco-btn">
+					<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 dark:bg-primary/10 border border-primary/10 text-xs font-semibold whitespace-nowrap products-eco-btn">
 						<?php esc_html_e( 'Eco-Friendly', 'luxe-landscape' ); ?>
 					</button>
 				</div>
