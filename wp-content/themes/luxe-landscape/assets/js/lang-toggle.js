@@ -95,6 +95,34 @@
 		'.auth-footer-1': { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
 		'.auth-footer-2': { en: 'Terms of Service', ar: 'شروط الخدمة' },
 		'.auth-footer-3': { en: 'Support', ar: 'الدعم' },
+
+		// Projects Page
+		'.projects-filter-title': { en: 'Filters', ar: 'التصفية' },
+		'.projects-cat-label': { en: 'Categories', ar: 'الفئات' },
+		'.projects-cta-title': { en: 'Bespoke Design', ar: 'تصميم مخصص' },
+		'.projects-cta-desc': { en: 'Request a personalized landscape consultation with our lead designers.', ar: 'اطلب استشارة تصميم مخصصة مع مصممينا الرئيسيين.' },
+		'.projects-cta-btn': { en: 'Book Now', ar: 'احجز الآن' },
+		'.projects-hero-label': { en: 'New Collection 2024', ar: 'مجموعة جديدة 2024' },
+		'.projects-hero-title': { en: 'Curated Outdoor Elegance', ar: 'أناقة خارجية منتقاة' },
+		'.projects-hero-desc': { en: 'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.', ar: 'ارتقِ بمساحاتك الخارجية مع منحوتاتنا الحجرية ونباتاتنا النادرة.' },
+		'.projects-sort-btn': { en: 'Sort by: Featured', ar: 'ترتيب: مميز' },
+		'.projects-avail-btn': { en: 'Availability', ar: 'التوفر' },
+		'.projects-eco-btn': { en: 'Eco-Friendly', ar: 'صديق للبيئة' },
+
+		// Single Product Page
+		'.product-stock-badge': { en: 'In Stock', ar: 'متوفر' },
+		'.product-feat-1': { en: '100% Natural Material', ar: '100٪ مواد طبيعية' },
+		'.product-feat-2': { en: 'Low-Voltage Pump', ar: 'مضخة منخفضة الجهد' },
+		'.product-add-to-cart-text': { en: 'Add to Cart', ar: 'أضف إلى السلة' },
+		'.product-out-of-stock-text': { en: 'Out of Stock', ar: 'غير متوفر' },
+		'.product-sustain-title': { en: 'Sustainability Footprint', ar: 'البصمة البيئية' },
+		'.product-sustain-1': { en: 'Recycled Water Use', ar: 'استخدام المياه المعاد تدويرها' },
+		'.product-sustain-2': { en: 'CO2 Offset / Unit', ar: 'تعويض الكربون / وحدة' },
+		'.product-specs-title': { en: 'Technical Specifications', ar: 'المواصفات الفنية' },
+		'.product-spec-label-1': { en: 'Dimensions', ar: 'الأبعاد' },
+		'.product-spec-label-2': { en: 'Material', ar: 'المادة' },
+		'.product-spec-label-3': { en: 'Weight', ar: 'الوزن' },
+		'.product-spec-label-4': { en: 'Quality', ar: 'الجودة' },
 	};
 
 	/**
