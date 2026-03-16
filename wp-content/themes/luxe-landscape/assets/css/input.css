@@ -1,2 +1,148 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
+
+/* ==========================================================================
+   WooCommerce & miniOrange Form Overrides (Headless UI Mimic)
+   ========================================================================== */
+
+/* Wrapper Constraints */
+.woocommerce-custom-auth-wrapper form {
+	@apply space-y-5 relative;
+}
+
+/* Rows & Labels */
+.woocommerce-custom-auth-wrapper .form-row {
+	@apply space-y-2 relative m-0;
+}
+.woocommerce-custom-auth-wrapper label {
+	@apply text-sm font-medium text-slate-700 dark:text-slate-300 ml-1 block;
+	display: block; /* some WC themes force inline */
+}
+.woocommerce-custom-auth-wrapper label:is(.dark *) {
+	color: var(--color-slate-300) !important;
+}
+.woocommerce-custom-auth-wrapper label .required {
+	@apply text-red-500 ml-1;
+}
+
+/* Standard labels for JavaScript translation */
+.woocommerce-custom-auth-wrapper label[for="username"],
+.woocommerce-custom-auth-wrapper label[for="phone"],
+.woocommerce-custom-auth-wrapper label[for="reg_email"],
+.woocommerce-custom-auth-wrapper label[for="reg_phone"] {
+	@apply text-sm font-medium text-slate-700 dark:text-slate-300 ml-1 block;
+}
+.woocommerce-custom-auth-wrapper label[for="username"]::after,
+.woocommerce-custom-auth-wrapper label[for="phone"]::after,
+.woocommerce-custom-auth-wrapper label[for="reg_email"]::after,
+.woocommerce-custom-auth-wrapper label[for="reg_phone"]::after {
+	content: " *";
+	@apply text-red-500 text-sm ml-1;
+}
+
+/* Inputs & Selects */
+.woocommerce-custom-auth-wrapper .input-text,
+.woocommerce-custom-auth-wrapper input[type="text"],
+.woocommerce-custom-auth-wrapper input[type="password"],
+.woocommerce-custom-auth-wrapper input[type="email"],
+.woocommerce-custom-auth-wrapper input[type="tel"] {
+	@apply w-full bg-slate-100 dark:bg-emerald-900/20 border border-slate-200 dark:border-emerald-800/50 rounded-xl py-4 px-4 placeholder:text-slate-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white;
+}
+
+/* Checkboxes (Remember Me / Terms) */
+.woocommerce-custom-auth-wrapper input[type="checkbox"] {
+	@apply appearance-none h-5 w-5 rounded border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-emerald-900/20 checked:bg-primary checked:border-primary transition-all cursor-pointer relative top-1;
+	margin: 0 5px 10px 5px !important;
+	border-width: 1px !important;
+}
+.woocommerce-custom-auth-wrapper .woocommerce-form__label-for-checkbox span {
+	@apply text-sm text-slate-600 dark:text-slate-400 ms-2;
+	margin: 0 !important;
+}
+/* Action Buttons */
+.woocommerce-custom-auth-wrapper .button {
+	@apply w-full bg-primary hover:bg-primary/90 text-slate-900 font-bold py-5 rounded-xl transition-all shadow-[0_0_30px_rgba(17,212,98,0.2)] flex items-center justify-center gap-2 mt-4 text-base tracking-wide border-0;
+}
+
+/* Secondary Links */
+.woocommerce-custom-auth-wrapper .lost_password {
+	@apply text-sm text-center mt-4 w-full block;
+}
+.woocommerce-custom-auth-wrapper .lost_password a {
+	@apply text-primary font-semibold hover:underline decoration-primary/30 underline-offset-4;
+}
+
+/* Hide native H2s from templates since we use custom headers */
+.woocommerce-custom-auth-wrapper h2 {
+	@apply hidden;
+	display: none !important;
+}
+
+/* Structure hacks for myaccount/form-login.php separated columns */
+.auth-mode-register .u-column1 {
+	display: none !important;
+}
+.auth-mode-register .u-column2 {
+	width: 100% !important;
+	float: none !important;
+}
+.auth-mode-register .col2-set {
+	display: block !important;
+	width: 100% !important;
+}
+
+/* miniOrange intlTelInput overrides */
+.woocommerce-custom-auth-wrapper .iti {
+	@apply w-full;
+	width: 100% !important;
+}
+.woocommerce-custom-auth-wrapper .iti__flag-container {
+	@apply z-10;
+	z-index: 10 !important;
+}
+.woocommerce-custom-auth-wrapper .iti input[type="text"],
+.woocommerce-custom-auth-wrapper .iti input[type="tel"] {
+	@apply pl-28;
+	padding-left: 105px !important;
+}
+/* Style the dropdown itself */
+.woocommerce-custom-auth-wrapper .iti__country-list {
+	@apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl dark:shadow-none text-slate-700 dark:text-slate-300;
+}
+.woocommerce-custom-auth-wrapper .iti__country.iti__highlight {
+	@apply bg-slate-50 dark:bg-slate-700/50;
+}
+.woocommerce-custom-auth-wrapper .iti__selected-flag {
+	@apply bg-transparent dark:bg-transparent border-r border-slate-300 dark:border-emerald-800/50 rounded-l-xl px-5 flex items-center justify-center;
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+}
+
+.woocommerce-custom-auth-wrapper
+	.woocommerce-form
+	.form-row-wide
+	.iti--show-flags
+	.iti__country-container
+	.iti__selected-country
+	.iti__selected-country-primary {
+	display: none !important;
+}
+
+.woocommerce-custom-auth-wrapper .iti__selected-dial-code {
+	@apply ml-0 text-slate-900 dark:text-white font-medium text-base;
+}
+
+/* miniOrange OTP Field Messages */
+.woocommerce-custom-auth-wrapper .mo_customer_validation-message {
+	@apply text-sm mt-2 text-emerald-500;
+}
+.woocommerce-custom-auth-wrapper #mo_message {
+	@apply text-red-500 dark:text-red-400 bg-red-500/10 border-red-500/20 p-3 rounded-lg text-sm mb-4;
+}
+
+/* Header Responsive Fixes */
+@media (min-width: 768px) {
+	#mobile-menu-open {
+		display: none !important;
+	}
+}

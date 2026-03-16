@@ -28,47 +28,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p class="text-slate-500 dark:text-slate-400 text-base auth-subtitle-login"><?php esc_html_e( 'Enter your phone number to access your account', 'luxe-landscape' ); ?></p>
 		</div>
 
-		<form class="space-y-6">
-			<div class="space-y-2 relative">
-				<label class="text-sm font-medium text-slate-700 dark:text-slate-300 ml-1 auth-label-phone"><?php esc_html_e( 'Phone Number', 'luxe-landscape' ); ?></label>
-				<div class="flex gap-3 relative">
-					<!-- Custom Country Code Select -->
-					<div class="relative w-[130px] shrink-0" id="custom-country-select">
-						<input type="hidden" id="country-code-input" value="+966" />
-						<button type="button" class="w-full flex items-center justify-between bg-slate-100 dark:bg-emerald-900/20 border border-slate-200 dark:border-emerald-800/50 rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all cursor-pointer" id="country-select-button">
-							<span class="text-slate-700 dark:text-slate-300 font-medium whitespace-nowrap" id="country-select-display">+966 (SA)</span>
-							<span class="material-symbols-outlined text-slate-500 text-xl transition-transform duration-200" id="country-select-icon">expand_more</span>
-						</button>
-						
-						<!-- Dropdown Menu -->
-						<div class="absolute top-full left-0 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-none overflow-hidden z-50 opacity-0 invisible origin-top transition-all duration-200 scale-95" id="country-options-menu">
-							<div class="max-h-[220px] overflow-y-auto w-full custom-scrollbar py-1">
-								<button type="button" class="country-option w-full text-left px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-slate-700 dark:text-slate-300 transition-colors" data-value="+1" data-label="+1 (US)">+1 (US)</button>
-								<button type="button" class="country-option w-full text-left px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-slate-700 dark:text-slate-300 transition-colors" data-value="+44" data-label="+44 (UK)">+44 (UK)</button>
-								<button type="button" class="country-option w-full text-left px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-slate-700 dark:text-slate-300 transition-colors" data-value="+33" data-label="+33 (FR)">+33 (FR)</button>
-								<button type="button" class="country-option w-full text-left px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-slate-700 dark:text-slate-300 transition-colors" data-value="+971" data-label="+971 (UAE)">+971 (UAE)</button>
-								<button type="button" class="country-option w-full text-left px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 bg-slate-50 dark:bg-slate-700/30 font-medium text-primary transition-colors" data-value="+966" data-label="+966 (SA)">+966 (SA)</button>
-							</div>
-						</div>
-					</div>
-					<!-- Phone Input -->
-					<div class="flex-1 relative">
-						<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">call</span>
-						<input id="phone-number-input" class="w-full bg-slate-100 dark:bg-emerald-900/20 border border-slate-200 dark:border-emerald-800/50 rounded-xl py-4 pl-12 pr-4 placeholder:text-slate-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="512 345 678" type="tel" dir="ltr" />
-					</div>
-				</div>
-				<!-- Inline Error Message -->
-				<p id="phone-error" class="hidden text-red-500 dark:text-red-400 text-sm mt-2 flex items-center gap-1 opacity-0 transition-opacity">
-					<span class="material-symbols-outlined text-[16px]">error</span>
-					<span class="error-text"></span>
-				</p>
-			</div>
-			
-			<button class="w-full bg-primary hover:bg-primary/90 text-slate-900 font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group auth-submit" type="button">
-				<span class="auth-btn-login"><?php esc_html_e( 'Send OTP', 'luxe-landscape' ); ?></span>
-				<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
-			</button>
-		</form>
+		<div class="woocommerce-custom-auth-wrapper">
+			<?php 
+			if ( class_exists( 'WooCommerce' ) ) {
+				wc_get_template( 'global/form-login.php', array(
+					'message'  => '',
+					'redirect' => wc_get_account_endpoint_url( 'dashboard' ),
+					'hidden'   => false,
+				) );
+			} else {
+				echo '<p class="text-red-500">WooCommerce is required for authentication.</p>';
+			}
+			?>
+		</div>
 
 		<div class="mt-10 pt-8 border-t border-slate-200 dark:border-white/5 text-center">
 			<p class="text-slate-500 dark:text-slate-400">

@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</button>
 			
 			<!-- Dark Mode Toggle -->
-			<button class="material-symbols-outlined hover:text-primary transition-colors" id="dark-mode-toggle" aria-label="<?php esc_attr_e( 'Toggle dark mode', 'luxe-landscape' ); ?>">dark_mode</button>
+			<button class="dark-mode-toggle material-symbols-outlined hover:text-primary transition-colors !hidden md:!block" aria-label="<?php esc_attr_e( 'Toggle dark mode', 'luxe-landscape' ); ?>">dark_mode</button>
 
 			
 
@@ -77,14 +77,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<!-- Account -->
 			<?php if ( is_user_logged_in() ) : ?>
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
-					<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
+					<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
 				<?php else : ?>
-					<button class="material-symbols-outlined hover:text-primary transition-colors hidden md:block" aria-label="<?php esc_attr_e( 'Account', 'luxe-landscape' ); ?>">person</button>
+					<button class="material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'Account', 'luxe-landscape' ); ?>">person</button>
 				<?php endif; ?>
 			<?php else : ?>
-				<a href="<?php echo esc_url( site_url( '/sign-in' ) ); ?>" class="hidden md:flex items-center gap-1.5 text-sm font-bold bg-slate-100 dark:bg-emerald-900/30 border border-slate-200 dark:border-primary/20 hover:bg-primary hover:text-slate-900 transition-all rounded-full px-4 py-2">
-					<span class="auth-link-signin"><?php esc_html_e( 'Sign In', 'luxe-landscape' ); ?></span>
-				</a>
+				<a href="<?php echo esc_url( site_url( '/sign-in' ) ); ?>" class="md:hidden material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'Sign In', 'luxe-landscape' ); ?>">person</a>
+				
 			<?php endif; ?>
 
 			<!-- Cart -->
@@ -113,9 +112,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="<?php echo class_exists( 'WooCommerce' ) ? esc_url( wc_get_page_permalink( 'shop' ) ) : '#'; ?>"><?php esc_html_e( 'Collections', 'luxe-landscape' ); ?></a>
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="#b2b-section"><?php esc_html_e( 'Wholesale', 'luxe-landscape' ); ?></a>
 	<a class="text-2xl font-bold hover:text-primary transition-colors" href="#impact-stats"><?php esc_html_e( 'Projects', 'luxe-landscape' ); ?></a>
-	<!-- Mobile Language Toggle -->
-	<button class="text-sm font-bold border border-slate-200 dark:border-slate-700 rounded-full px-5 py-2 hover:text-primary hover:border-primary transition-all flex items-center gap-2 mt-4" id="lang-toggle-mobile" aria-label="<?php esc_attr_e( 'Toggle language', 'luxe-landscape' ); ?>">
-		<span class="material-symbols-outlined">translate</span>
-		<span id="lang-label-mobile">AR</span>
-	</button>
+	<!-- Mobile Utilities -->
+	<div class="flex items-center gap-6 mt-4">
+		<!-- Mobile Language Toggle -->
+		<button class="text-sm font-bold border border-slate-200 dark:border-slate-700 rounded-full px-5 py-2 hover:text-primary hover:border-primary transition-all flex items-center gap-2" id="lang-toggle-mobile" aria-label="<?php esc_attr_e( 'Toggle language', 'luxe-landscape' ); ?>">
+			<span class="material-symbols-outlined">translate</span>
+			<span id="lang-label-mobile">AR</span>
+		</button>
+		
+		<!-- Mobile Dark Mode Toggle -->
+		<button class="dark-mode-toggle material-symbols-outlined hover:text-primary transition-colors text-3xl" aria-label="<?php esc_attr_e( 'Toggle dark mode', 'luxe-landscape' ); ?>">dark_mode</button>
+	</div>
 </div>
