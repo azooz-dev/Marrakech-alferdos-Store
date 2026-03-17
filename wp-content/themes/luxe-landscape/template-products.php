@@ -1,13 +1,13 @@
 <?php
 /**
- * Template Name: Projects Page
+ * Template Name: Products Page
  *
  * Stub file that loads the actual layout.
  *
  * @package Luxe_Landscape
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 

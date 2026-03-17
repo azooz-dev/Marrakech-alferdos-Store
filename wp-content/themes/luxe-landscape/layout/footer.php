@@ -22,72 +22,72 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
 					<span class="font-bold text-xl tracking-tighter"><?php esc_html_e( 'LUXE LANDSCAPE', 'luxe-landscape' ); ?></span>
 				</div>
-				<p class="text-slate-500 max-w-sm footer-tagline"><?php esc_html_e( 'Crafting the future of biophilic luxury with factory-direct ethics and sustainable engineering.', 'luxe-landscape' ); ?></p>
+				<p class="text-slate-500 max-w-sm footer-tagline"><?php echo esc_html( get_theme_mod( 'luxe_footer_tagline', __( 'Crafting the future of biophilic luxury with factory-direct ethics and sustainable engineering.', 'luxe-landscape' ) ) ); ?></p>
 				<div class="space-y-4">
 					<h4 class="font-bold footer-newsletter-title"><?php esc_html_e( 'Subscribe to our Design Journal', 'luxe-landscape' ); ?></h4>
-					<div class="flex gap-2">
-						<input class="bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 flex-1" placeholder="email@address.com" type="email">
-						<button class="bg-slate-900 dark:bg-primary dark:text-slate-900 text-white px-6 rounded-xl font-bold footer-newsletter-btn"><?php esc_html_e( 'Join', 'luxe-landscape' ); ?></button>
-					</div>
+					<form action="<?php echo esc_url( get_theme_mod( 'luxe_footer_newsletter_url', '#' ) ); ?>" method="post" class="flex gap-2">
+						<input class="bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 flex-1" placeholder="email@address.com" type="email" name="email">
+						<button type="submit" class="bg-slate-900 dark:bg-primary dark:text-slate-900 text-white px-6 rounded-xl font-bold footer-newsletter-btn"><?php esc_html_e( 'Join', 'luxe-landscape' ); ?></button>
+					</form>
 				</div>
 			</div>
 
 			<!-- Collections -->
 			<div>
 				<h4 class="font-bold mb-6 footer-title-collections"><?php esc_html_e( 'Collections', 'luxe-landscape' ); ?></h4>
+				<div class="space-y-4 text-slate-500 flex flex-col items-start">
 				<?php
 				if ( has_nav_menu( 'footer-collections' ) ) {
 					wp_nav_menu( array(
 						'theme_location' => 'footer-collections',
 						'container'      => false,
-						'menu_class'     => 'space-y-4 text-slate-500',
-						'link_before'    => '',
-						'link_after'     => '',
+						'items_wrap'     => '%3$s', // No UL
+						'walker'         => new \Luxe_Landscape_Nav_Walker(),
 					) );
 				} else {
 					?>
-					<ul class="space-y-4 text-slate-500">
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Outdoor Sculptures', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Vertical Gardens', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Water Features', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Premium Soil', 'luxe-landscape' ); ?></a></li>
-					</ul>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Outdoor Sculptures', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Vertical Gardens', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Water Features', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Premium Soil', 'luxe-landscape' ); ?></a>
 					<?php
 				}
 				?>
+				</div>
 			</div>
 
 			<!-- Support -->
 			<div>
 				<h4 class="font-bold mb-6 footer-title-support"><?php esc_html_e( 'Support', 'luxe-landscape' ); ?></h4>
+				<div class="space-y-4 text-slate-500 flex flex-col items-start">
 				<?php
 				if ( has_nav_menu( 'footer-support' ) ) {
 					wp_nav_menu( array(
 						'theme_location' => 'footer-support',
 						'container'      => false,
-						'menu_class'     => 'space-y-4 text-slate-500',
+						'items_wrap'     => '%3$s', // No UL
+						'walker'         => new \Luxe_Landscape_Nav_Walker(),
 					) );
 				} else {
 					?>
-					<ul class="space-y-4 text-slate-500">
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Track Order', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Wholesale Portal', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Warranty Policy', 'luxe-landscape' ); ?></a></li>
-						<li><a class="hover:text-primary transition-colors" href="#"><?php esc_html_e( 'Contact Expert', 'luxe-landscape' ); ?></a></li>
-					</ul>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Track Order', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Wholesale Portal', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Warranty Policy', 'luxe-landscape' ); ?></a>
+					<a class="hover:text-primary transition-colors block" href="#"><?php esc_html_e( 'Contact Expert', 'luxe-landscape' ); ?></a>
 					<?php
 				}
 				?>
+				</div>
 			</div>
 
 			<!-- Social -->
 			<div>
 				<h4 class="font-bold mb-6 footer-title-social"><?php esc_html_e( 'Social', 'luxe-landscape' ); ?></h4>
 				<ul class="space-y-4 text-slate-500">
-					<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
-					<li><a class="hover:text-primary transition-colors" href="#">Pinterest</a></li>
-					<li><a class="hover:text-primary transition-colors" href="#">LinkedIn</a></li>
-					<li><a class="hover:text-primary transition-colors" href="#">YouTube</a></li>
+					<li><a class="hover:text-primary transition-colors" href="<?php echo esc_url( get_theme_mod( 'luxe_footer_social_instagram', '#' ) ); ?>" target="_blank" rel="noopener">Instagram</a></li>
+					<li><a class="hover:text-primary transition-colors" href="<?php echo esc_url( get_theme_mod( 'luxe_footer_social_pinterest', '#' ) ); ?>" target="_blank" rel="noopener">Pinterest</a></li>
+					<li><a class="hover:text-primary transition-colors" href="<?php echo esc_url( get_theme_mod( 'luxe_footer_social_linkedin', '#' ) ); ?>" target="_blank" rel="noopener">LinkedIn</a></li>
+					<li><a class="hover:text-primary transition-colors" href="<?php echo esc_url( get_theme_mod( 'luxe_footer_social_youtube', '#' ) ); ?>" target="_blank" rel="noopener">YouTube</a></li>
 				</ul>
 			</div>
 		</div>

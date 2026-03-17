@@ -205,7 +205,7 @@ function luxe_landscape_cart_count_fragment( $fragments ) {
 }
 
 /* ============================================
-   CUSTOM NAV WALKER
+   CUSTOM NAV WALKER (Desktop/Footer)
    ============================================ */
 class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
@@ -214,6 +214,31 @@ class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = null ) {}
 	public function end_lvl( &$output, $depth = 0, $args = null ) {}
+}
+
+/* ============================================
+   CUSTOM NAV WALKER (Mobile Overlay)
+   ============================================ */
+class Luxe_Landscape_Mobile_Nav_Walker extends Walker_Nav_Menu {
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		$output .= '<a class="text-2xl font-bold hover:text-primary transition-colors" href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>';
+	}
+
+	public function start_lvl( &$output, $depth = 0, $args = null ) {}
+	public function end_lvl( &$output, $depth = 0, $args = null ) {}
+}
+
+/* ============================================
+   ACF OPTIONS PAGE
+   ============================================ */
+if ( function_exists( 'acf_add_options_page' ) ) {
+	acf_add_options_page( array(
+		'page_title' => __( 'Theme Settings', 'luxe-landscape' ),
+		'menu_title' => __( 'Theme Settings', 'luxe-landscape' ),
+		'menu_slug'  => 'theme-settings',
+		'capability' => 'edit_posts',
+		'redirect'   => false
+	) );
 }
 
 /* ============================================
@@ -320,3 +345,57 @@ add_filter( 'gettext', function( $translated_text, $text, $domain ) {
     }
     return $translated_text;
 }, 20, 3 );
+
+/* ============================================
+   CUSTOMIZER: Footer Settings
+   ============================================ */
+add_action( 'customize_register', 'luxe_landscape_footer_customizer' );
+function luxe_landscape_footer_customizer( $wp_customize ) {
+	// --- Section ---
+	$wp_customize->add_section( 'luxe_footer_settings', array(
+		'title'    => __( 'Footer Settings', 'luxe-landscape' ),
+		'priority' => 160,
+	) );
+
+	// --- Tagline ---
+	$wp_customize->add_setting( 'luxe_footer_tagline', array(
+		'default'           => 'Crafting the future of biophilic luxury with factory-direct ethics and sustainable engineering.',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'luxe_footer_tagline', array(
+		'type'    => 'textarea',
+		'section' => 'luxe_footer_settings',
+		'label'   => __( 'Footer Tagline', 'luxe-landscape' ),
+	) );
+
+	// --- Social Links ---
+	$socials = array(
+		'instagram' => 'Instagram URL',
+		'pinterest' => 'Pinterest URL',
+		'linkedin'  => 'LinkedIn URL',
+		'youtube'   => 'YouTube URL',
+	);
+	foreach ( $socials as $key => $label_text ) {
+		$wp_customize->add_setting( 'luxe_footer_social_' . $key, array(
+			'default'           => '#',
+			'sanitize_callback' => 'esc_url_raw',
+		) );
+		$wp_customize->add_control( 'luxe_footer_social_' . $key, array(
+			'type'    => 'url',
+			'section' => 'luxe_footer_settings',
+			'label'   => __( $label_text, 'luxe-landscape' ),
+		) );
+	}
+
+	// --- Newsletter Form Action URL ---
+	$wp_customize->add_setting( 'luxe_footer_newsletter_url', array(
+		'default'           => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( 'luxe_footer_newsletter_url', array(
+		'type'    => 'url',
+		'section' => 'luxe_footer_settings',
+		'label'   => __( 'Newsletter Form Action URL (e.g. Mailchimp)', 'luxe-landscape' ),
+	) );
+}
+

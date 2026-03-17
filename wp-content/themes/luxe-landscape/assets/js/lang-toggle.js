@@ -205,6 +205,7 @@
 	 * Apply translations to all elements with matching classes
 	 */
 	function applyTranslations(lang) {
+		// 1. Static Dictionary Translations (for hardcoded template text)
 		Object.keys(translations).forEach(function (selector) {
 			var els = document.querySelectorAll(selector);
 			els.forEach(function (el) {
@@ -212,7 +213,14 @@
 			});
 		});
 
-		// Update placeholders on inputs
+		// 2. Dynamic ACF Data-Attribute Translations 
+		// (Finds any element on the page with data-en and data-ar and swaps text)
+		var dynamicEls = document.querySelectorAll('[data-en][data-ar]');
+		dynamicEls.forEach(function (el) {
+			el.textContent = el.getAttribute('data-' + lang);
+		});
+
+		// 3. Update placeholders on inputs
 		if (lang === 'ar') {
 			document.querySelectorAll('input[placeholder="Full Name"]').forEach(function(el) { el.placeholder = 'الاسم الكامل'; });
 			document.querySelectorAll('input[placeholder="Enter your full name"]').forEach(function(el) { el.placeholder = 'أدخل اسمك الكامل'; });
