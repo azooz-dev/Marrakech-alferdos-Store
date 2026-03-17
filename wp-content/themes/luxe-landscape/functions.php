@@ -225,7 +225,7 @@ function luxe_landscape_protect_routes() {
 	if ( is_user_logged_in() ) {
 		// Prevent them from visiting the custom Sign In or Sign Up pages
 		if ( is_page_template( 'template-signin.php' ) || is_page_template( 'template-signup.php' ) || is_page( 'sign-in' ) || is_page( 'sign-up' ) ) {
-			$redirect = class_exists( 'WooCommerce' ) ? wc_get_account_endpoint_url( 'dashboard' ) : home_url( '/' );
+			$redirect = class_exists( 'WooCommerce' ) ? wc_get_account_endpoint_url( 'edit-account' ) : home_url( '/' );
 			wp_safe_redirect( $redirect );
 			exit;
 		}
@@ -240,6 +240,70 @@ function luxe_landscape_protect_routes() {
 			}
 		}
 	}
+}
+
+/* ============================================
+   WOOCOMMERCE MY ACCOUNT CUSTOMIZATION
+   ============================================ */
+if ( class_exists( 'WooCommerce' ) ) {
+	// 1. Register custom "favorites" endpoint
+	add_action( 'init', function () {
+		add_rewrite_endpoint( 'favorites', EP_ROOT | EP_PAGES );
+		
+		// Flush rewrite rules on registration to ensure the new endpoint works
+		if ( ! get_option( 'luxe_favorites_endpoint_flushed' ) ) {
+			flush_rewrite_rules();
+			update_option( 'luxe_favorites_endpoint_flushed', 1 );
+		}
+	});
+
+	add_filter( 'query_vars', function ( $vars ) {
+		$vars[] = 'favorites';
+		return $vars;
+	}, 10 );
+
+	// 1b. Ensure WooCommerce recognizes it
+	add_filter( 'woocommerce_get_query_vars', function( $vars ) {
+		$vars['favorites'] = 'favorites';
+		return $vars;
+	});
+
+	// 2. Override My Account menu items to match Stitch sidebar
+	add_filter( 'woocommerce_account_menu_items', function ( $items ) {
+		$new_items = array(
+			'edit-account' => __( 'Profile', 'luxe-landscape' ),
+			'orders'       => __( 'Orders', 'luxe-landscape' ),
+			'favorites'    => __( 'Favorites', 'luxe-landscape' ),
+			'edit-address' => __( 'Addresses', 'luxe-landscape' ),
+			'customer-logout' => __( 'Logout', 'luxe-landscape' ),
+		);
+		return $new_items;
+	});
+
+	// 3. Redirect dashboard to edit-account (profile)
+	add_action( 'template_redirect', function () {
+		global $wp_query;
+		$is_favorites = isset( $wp_query->query_vars['favorites'] );
+		
+		if ( is_account_page() && ! is_wc_endpoint_url() && ! $is_favorites && is_user_logged_in() ) {
+			wp_safe_redirect( wc_get_account_endpoint_url( 'edit-account' ) );
+			exit;
+		}
+	}, 1 );
+
+	// 4. Add favorites endpoint content
+	add_action( 'woocommerce_account_favorites_endpoint', function () {
+		load_template( get_template_directory() . '/pages/account-favorites.php' );
+	});
+
+	// 5. Enqueue account.js on My Account pages
+	add_action( 'wp_enqueue_scripts', function () {
+		if ( is_account_page() ) {
+			$theme_uri     = get_template_directory_uri();
+			$theme_version = wp_get_theme()->get( 'Version' );
+			wp_enqueue_script( 'luxe-account', $theme_uri . '/assets/js/account.js', array(), $theme_version, true );
+		}
+	});
 }
 
 // Rename WooCommerce Labels

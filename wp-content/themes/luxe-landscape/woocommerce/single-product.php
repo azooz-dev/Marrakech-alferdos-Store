@@ -159,6 +159,13 @@ $dimensions = $product->get_dimensions();
 						<span class="product-out-of-stock-text"><?php esc_html_e( 'Out of Stock', 'luxe-landscape' ); ?></span>
 					</button>
 				<?php endif; ?>
+
+				<!-- View in 3D / AR Button -->
+				<button class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer">
+					<span class="material-symbols-outlined">view_in_ar</span>
+					<span class="product-ar-btn-text"><?php esc_html_e( 'View in 3D / AR', 'luxe-landscape' ); ?></span>
+					<span class="material-symbols-outlined text-sm">open_in_new</span>
+				</button>
 			</div>
 
 			<!-- Product Meta -->

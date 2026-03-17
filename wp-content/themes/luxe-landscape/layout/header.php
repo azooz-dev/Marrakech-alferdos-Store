@@ -77,7 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<!-- Account -->
 			<?php if ( is_user_logged_in() ) : ?>
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
-					<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'dashboard' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
+					<a href="<?php echo esc_url( wc_get_account_endpoint_url( 'edit-account' ) ); ?>" class="material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'My Account', 'luxe-landscape' ); ?>">person</a>
 				<?php else : ?>
 					<button class="material-symbols-outlined hover:text-primary transition-colors" aria-label="<?php esc_attr_e( 'Account', 'luxe-landscape' ); ?>">person</button>
 				<?php endif; ?>

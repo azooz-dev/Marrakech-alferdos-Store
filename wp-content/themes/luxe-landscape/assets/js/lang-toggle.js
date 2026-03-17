@@ -123,11 +123,82 @@
 		'.product-spec-label-2': { en: 'Material', ar: 'المادة' },
 		'.product-spec-label-3': { en: 'Weight', ar: 'الوزن' },
 		'.product-spec-label-4': { en: 'Quality', ar: 'الجودة' },
+		'.product-ar-btn-text': { en: 'View in 3D / AR', ar: 'عرض ثلاثي الأبعاد / AR' },
 
 		// Xootix Auth
 		'.auth-btn-login-text': { en: 'Login', ar: 'تسجيل الدخول' },
 		'.auth-label-phone-text': { en: 'Phone', ar: 'رقم الهاتف' },
 		'.auth-link-change': { en: 'Change?', ar: 'تغيير؟' },
+
+		// My Account — Sidebar
+		'.acct-sidebar-heading': { en: 'Account Settings', ar: 'إعدادات الحساب' },
+		'.acct-sidebar-profile': { en: 'Profile', ar: 'الملف الشخصي' },
+		'.acct-sidebar-orders': { en: 'Orders', ar: 'الطلبات' },
+		'.acct-sidebar-favorites': { en: 'Favorites', ar: 'المفضلة' },
+		'.acct-sidebar-addresses': { en: 'Addresses', ar: 'العناوين' },
+		'.acct-sidebar-logout': { en: 'Logout', ar: 'تسجيل الخروج' },
+		'.acct-support-subtitle': { en: 'Need assistance?', ar: 'تحتاج مساعدة؟' },
+		'.acct-support-title': { en: 'Concierge Support', ar: 'دعم مخصص' },
+		'.acct-support-btn': { en: 'Contact Specialist', ar: 'تواصل مع متخصص' },
+
+		// My Account — Profile
+		'.acct-profile-title': { en: 'Personal Information', ar: 'المعلومات الشخصية' },
+		'.acct-profile-desc': { en: 'Manage your biophilic sanctuary settings and update your contact preferences for a seamless luxury experience.', ar: 'إدارة إعدادات ملاذك الطبيعي وتحديث تفضيلات الاتصال لتجربة فاخرة سلسة.' },
+		'.acct-label-name': { en: 'Full Name', ar: 'الاسم الكامل' },
+		'.acct-label-phone': { en: 'Phone Number', ar: 'رقم الهاتف' },
+		'.acct-label-email': { en: 'Email Address', ar: 'البريد الإلكتروني' },
+		'.acct-verified-badge': { en: 'Verified', ar: 'موثق' },
+		'.acct-btn-cancel': { en: 'Cancel', ar: 'إلغاء' },
+		'.acct-btn-save': { en: 'Save Changes', ar: 'حفظ التغييرات' },
+		'.acct-sec-1-title': { en: 'End-to-End Encryption', ar: 'تشفير شامل' },
+		'.acct-sec-1-desc': { en: 'Your personal data is encrypted and never shared with third parties.', ar: 'بياناتك الشخصية مشفرة ولا تتم مشاركتها مع أطراف ثالثة.' },
+		'.acct-sec-2-title': { en: 'Biometric Focus', ar: 'التركيز البيومتري' },
+		'.acct-sec-2-desc': { en: 'Use your phone to sign in securely without remembering passwords.', ar: 'استخدم هاتفك لتسجيل الدخول بأمان بدون حفظ كلمات المرور.' },
+		'.acct-sec-3-title': { en: 'Eco-Account', ar: 'حساب صديق للبيئة' },
+		'.acct-sec-3-desc': { en: 'For every update, we contribute to local reforestation efforts.', ar: 'مع كل تحديث، نساهم في جهود إعادة التشجير المحلية.' },
+
+		// My Account — Orders
+		'.acct-orders-title': { en: 'Your Orders', ar: 'طلباتك' },
+		'.acct-orders-desc': { en: 'Track your biophilic sanctuary acquisitions and manage your premium landscape investments.', ar: 'تتبع مقتنيات ملاذك الطبيعي وأدر استثماراتك الفاخرة في تنسيق الحدائق.' },
+		'.acct-tab-all': { en: 'All Orders', ar: 'جميع الطلبات' },
+		'.acct-tab-active': { en: 'Active', ar: 'نشطة' },
+		'.acct-tab-completed': { en: 'Completed', ar: 'مكتملة' },
+		'.acct-order-total-label': { en: 'Total Amount', ar: 'المبلغ الإجمالي' },
+		'.acct-btn-view-details': { en: 'View Details', ar: 'عرض التفاصيل' },
+		'.acct-btn-track': { en: 'Track Package', ar: 'تتبع الشحنة' },
+
+		// My Account — Favorites
+		'.acct-favorites-title': { en: 'Your Favorites', ar: 'مفضلاتك' },
+		'.acct-favorites-desc': { en: 'Curate your personal collection of biophilic masterpieces and luxury outdoor accents.', ar: 'اختر مجموعتك الشخصية من التحف الطبيعية ولمسات الرفاهية الخارجية.' },
+		'.acct-fav-remove': { en: 'Remove', ar: 'إزالة' },
+		'.acct-fav-view': { en: 'View Details', ar: 'عرض التفاصيل' },
+
+		// My Account — Addresses
+		'.acct-addresses-title': { en: 'Saved Addresses', ar: 'العناوين المحفوظة' },
+		'.acct-addresses-desc': { en: 'Manage your shipping and billing locations for a seamless luxury shopping experience.', ar: 'أدر عناوين الشحن والفوترة لتجربة تسوق فاخرة سلسة.' },
+		'.acct-btn-add-address': { en: 'Add New Address', ar: 'إضافة عنوان جديد' },
+		'.acct-badge-shipping': { en: 'Primary Shipping', ar: 'الشحن الرئيسي' },
+		'.acct-badge-billing': { en: 'Billing Address', ar: 'عنوان الفوترة' },
+		'.acct-addr-home-label': { en: 'Home Estate', ar: 'المنزل' },
+		'.acct-addr-office-label': { en: 'Studio Office', ar: 'المكتب' },
+		'.acct-btn-edit': { en: 'Edit', ar: 'تعديل' },
+		'.acct-btn-delete': { en: 'Delete', ar: 'حذف' },
+		'.acct-switch-shipping': { en: 'Set as Primary Shipping Address', ar: 'تعيين كعنوان شحن رئيسي' },
+		'.acct-switch-billing': { en: 'Set as Billing Address', ar: 'تعيين كعنوان فوترة' },
+
+		// My Account — Address Modal
+		'.acct-modal-title': { en: 'Add New Address', ar: 'إضافة عنوان جديد' },
+		'.acct-modal-desc': { en: 'Enter your details for biophilic delivery.', ar: 'أدخل بياناتك للتسليم الطبيعي.' },
+		'.acct-modal-label-tag': { en: 'Address Label', ar: 'تسمية العنوان' },
+		'.acct-modal-label-name': { en: 'Full Name', ar: 'الاسم الكامل' },
+		'.acct-modal-label-street': { en: 'Street Address', ar: 'عنوان الشارع' },
+		'.acct-modal-label-apt': { en: 'Apartment, suite, etc. (Optional)', ar: 'شقة، جناح، إلخ (اختياري)' },
+		'.acct-modal-label-city': { en: 'City', ar: 'المدينة' },
+		'.acct-modal-label-state': { en: 'State/Province', ar: 'المنطقة / المحافظة' },
+		'.acct-modal-label-postal': { en: 'Postal Code', ar: 'الرمز البريدي' },
+		'.acct-modal-label-country': { en: 'Country', ar: 'الدولة' },
+		'.acct-modal-save': { en: 'Save Address', ar: 'حفظ العنوان' },
+		'.acct-modal-cancel': { en: 'Cancel', ar: 'إلغاء' },
 	};
 
 	/**
