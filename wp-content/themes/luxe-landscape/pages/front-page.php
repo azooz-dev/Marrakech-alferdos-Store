@@ -41,8 +41,18 @@ if ( class_exists( 'WooCommerce' ) ) {
 	) );
 }
 
+// Hero featured product from Customizer
+$hero_product_id = absint( get_theme_mod( 'luxe_hero_featured_product', 0 ) );
+$hero_product    = null;
+if ( $hero_product_id > 0 && function_exists( 'wc_get_product' ) ) {
+	$hero_product = wc_get_product( $hero_product_id );
+	if ( ! $hero_product || ! $hero_product->is_visible() ) {
+		$hero_product = null;
+	}
+}
+
 // ==============================================================
-// Fallback category data (from Stitch design)
+// Fallback category data (layout keys only: span, heading)
 // ==============================================================
 $fallback_categories = array(
 	array(
@@ -75,39 +85,6 @@ $fallback_categories = array(
 	),
 );
 
-// ==============================================================
-// Fallback products data (from Stitch design)
-// ==============================================================
-$fallback_products = array(
-	array(
-		'name'    => __( 'Lunar Sphere Planter', 'luxe-landscape' ),
-		'price'   => '$445',
-		'old'     => '$890',
-		'badge'   => '50% OFF',
-		'image'   => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBczq5e-n9u6tK2-lvwa6B6t4VmWGIp-TzfymPVpY_RXvqZgyH-y_hZIKlv0xgZ5YjI880zTIbwkzyDibXYQt6qYZf29deSpHJkvnfOeU43AimNr7LbgRpkircgfGJVp2jNr_d55BlCIlSd8r6sHKZzIEEBaETmBlceo-rHU-6Ucop7Dr3chlgaMKHozHCIgnSICHXq_jR9eigcv7CW_aev308IqOBETMubsFcanEHL9r1VhOs2hwY1JBrvO71hC1AYszZYIyZDurY',
-	),
-	array(
-		'name'    => __( 'Obsidian Totem', 'luxe-landscape' ),
-		'price'   => '$600',
-		'old'     => '$1,200',
-		'badge'   => '50% OFF',
-		'image'   => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCFumv7ULRBMUB1Vj9xxodb-M1_IWOjLESPeYkhxryOvTELDN7s19r7bgGdQYZP3QOE6M_AuvnfDFjeVjw82LOAI2TG7W6G46ELbEf5WWcfi7jQeoZ-tsAlPMsD7OuKQ37Ts-EeVBEoL1BOh1Gy5pzVL90GgkuFGQ5qNQt6gM5WgyQJzSPKP2cEZIwj6qqRdX6nDQL5Ssle02_mLo33rkIm5UeV9zFKN-jGZGzXZBIgLbglWTHgLwr1odlDhhbbgqbWz6pfpaZxnro',
-	),
-	array(
-		'name'    => __( 'Magma Fire Bowl', 'luxe-landscape' ),
-		'price'   => '$1,200',
-		'old'     => '$2,400',
-		'badge'   => '50% OFF',
-		'image'   => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXnVwIxIQbzbHWZzh5Z4AXd_hUGLpjnenUPV_ZXSHnKmtQRTSOJIN-EZj0mCfccRn0bejmTojjHLKjCjJRyAXP8moVOM-DRpd1HIjPOw5nJuJCVEI4oBAc1wEqQ9hcp0eoDqTYrJgJRHBBsXaynX3iejSWPt5J7WqTVw7GBMIJFRBGfYvbIbzhGlAlh9q1gKUVV86mcNB-vvskCJOKnfZ9oGyquGlHpvoodk-lfGwHv-m_nxOqgpYuwzWExUDeIUcP0R3fTHsVcIY',
-	),
-	array(
-		'name'    => __( 'Alabaster Abstract', 'luxe-landscape' ),
-		'price'   => '$750',
-		'old'     => '$1,500',
-		'badge'   => '50% OFF',
-		'image'   => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAcRvJ4uKXkd0zCC8BaKh-wjZP4bloqD12gziAlN87YltQ7DFNUDL4ap1yVOINz0IqqZgbUeAvlWjXF-S5Ks8WqzW5CRhRl5TpUqlKqrFz51JI5pxCeP82EiOpVOUZzJ9NBXvx03WM8o2jHp4hUsPaIWcN4s4F3Sobsx8wniPXMV5zfX5XXanmrBA9BWxD1ALoZs9U3gIyASVY9cPTIxzNL0BhOhato_8FF6srXBWelx0YBXcqoM13IuIEmDKm_64E0l3Bgivsxj6s',
-	),
-);
 ?>
 
 <!-- ====================================================
@@ -135,22 +112,40 @@ $fallback_products = array(
 			</div>
 		</div>
 
-		<!-- Hero Image -->
+		<!-- Hero Image / Featured Product Card -->
 		<div class="lg:col-span-5 relative">
 			<div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative featured-card-hover">
-				<img alt="<?php esc_attr_e( 'Luxury garden setup', 'luxe-landscape' ); ?>"
-				     class="w-full h-full object-cover"
-				     id="hero-parallax-img"
-				     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy-xAtHG9hLVpxfj4-djwTzhKv9v3eKXP7LTo4-PvN0-ZDsknZPazaHJfESf6g7WuR_2BlDx93tWbjtumba1rZM5nADm669nR9QWYC3BjTVQibF5FO62fCOetWbcSyogI1qSIQc5jvI8eW06KGDwCXZY5bihzXkmjSR5VZA2fWjJ12IZiAPTJFXVRDs0rLgp8kvhQDGScnrDlifyl9ze-jHXv24R7DLYJfpbo1F3d1x5BWjsh-8MPn1B_G1I4YjifWrCccX3TCFgI">
-				<div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl glass-shimmer">
-					<div class="flex items-center justify-between">
-						<div>
-							<p class="text-xs font-bold text-primary uppercase tracking-widest hero-featured-label"><?php esc_html_e( 'Featured Piece', 'luxe-landscape' ); ?></p>
-							<p class="font-bold text-lg hero-featured-name"><?php esc_html_e( 'The Zenith Fountain', 'luxe-landscape' ); ?></p>
+				<?php if ( $hero_product ) :
+					$hero_img_id = $hero_product->get_image_id();
+					$hero_img_url = $hero_img_id ? wp_get_attachment_url( $hero_img_id ) : wc_placeholder_img_src( 'full' );
+					$hero_link = get_permalink( $hero_product->get_id() );
+				?>
+					<a href="<?php echo esc_url( $hero_link ); ?>" class="block w-full h-full">
+						<img alt="<?php echo esc_attr( $hero_product->get_name() ); ?>"
+						     class="w-full h-full object-cover"
+						     id="hero-parallax-img"
+						     src="<?php echo esc_url( $hero_img_url ); ?>">
+						<div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl glass-shimmer">
+							<div class="flex items-center justify-between">
+								<div>
+									<p class="text-xs font-bold text-primary uppercase tracking-widest hero-featured-label"><?php esc_html_e( 'Featured Piece', 'luxe-landscape' ); ?></p>
+									<p class="font-bold text-lg hero-featured-name"><?php echo esc_html( $hero_product->get_name() ); ?></p>
+								</div>
+								<span class="text-2xl font-bold"><?php echo wp_kses_post( $hero_product->get_price_html() ); ?></span>
+							</div>
 						</div>
-						<span class="text-2xl font-bold">$4,200</span>
+					</a>
+				<?php else :
+					$hero_placeholder = function_exists( 'wc_placeholder_img_src' ) ? wc_placeholder_img_src( 'full' ) : '';
+				?>
+					<img alt="<?php esc_attr_e( 'Luxury garden setup', 'luxe-landscape' ); ?>"
+					     class="w-full h-full object-cover"
+					     id="hero-parallax-img"
+					     src="<?php echo esc_url( $hero_placeholder ); ?>">
+					<div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl glass-shimmer">
+						<p class="text-sm text-slate-500 dark:text-slate-400"><?php esc_html_e( 'Set featured product in Customizer → Homepage Settings.', 'luxe-landscape' ); ?></p>
 					</div>
-				</div>
+				<?php endif; ?>
 			</div>
 			<!-- Abstract Decorative Element -->
 			<div class="absolute -top-12 -right-12 size-64 bg-primary/20 blur-[100px] -z-10 rounded-full"></div>
@@ -176,40 +171,41 @@ $fallback_products = array(
 	<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-[800px]">
 		<?php
 		$use_wc = ! empty( $categories ) && ! is_wp_error( $categories );
-		$cat_list = $use_wc ? $categories : $fallback_categories;
-
-		foreach ( $cat_list as $i => $cat ) :
-			$fb = $fallback_categories[ $i ] ?? $fallback_categories[0];
-			$cat_name  = $use_wc ? $cat->name : $fb['name'];
-			$cat_count = $use_wc ? $cat->count . ' ' . __( 'Products', 'luxe-landscape' ) : ( $fb['count'] ?: '' );
-			$cat_image = $fb['image'];
-			$cat_span  = $fb['span'];
-			$cat_h     = $fb['heading'];
-
-			if ( $use_wc ) {
+		if ( ! $use_wc ) :
+			?>
+			<div class="md:col-span-4 flex items-center justify-center rounded-3xl bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 p-12 text-center">
+				<p><?php esc_html_e( 'Add product categories in WooCommerce to display them here.', 'luxe-landscape' ); ?></p>
+			</div>
+		<?php
+		else :
+			foreach ( $categories as $i => $cat ) :
+				$fb           = $fallback_categories[ $i ] ?? $fallback_categories[0];
+				$cat_span     = $fb['span'];
+				$cat_h        = $fb['heading'];
+				$cat_name     = $cat->name;
+				$cat_count    = $cat->count . ' ' . __( 'Products', 'luxe-landscape' );
 				$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
-				if ( $thumbnail_id ) {
-					$cat_image = wp_get_attachment_url( $thumbnail_id );
+				$cat_image    = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : ( function_exists( 'wc_placeholder_img_src' ) ? wc_placeholder_img_src( 'full' ) : '' );
+				$cat_link     = get_term_link( $cat );
+				if ( is_wp_error( $cat_link ) ) {
+					$cat_link = '#';
 				}
-			}
-		?>
-			<div class="<?php echo esc_attr( $cat_span ); ?> relative group overflow-hidden rounded-3xl">
-				<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-				     src="<?php echo esc_url( $cat_image ); ?>"
-				     alt="<?php echo esc_attr( $cat_name ); ?>">
-				<div class="absolute inset-0 bento-gradient flex flex-col justify-end p-8">
-					<h3 class="<?php echo esc_attr( $cat_h ); ?> font-bold text-white"><?php echo esc_html( $cat_name ); ?></h3>
-					<?php if ( $cat_count ) : ?>
+			?>
+				<a href="<?php echo esc_url( $cat_link ); ?>" class="<?php echo esc_attr( $cat_span ); ?> relative group overflow-hidden rounded-3xl block">
+					<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+					     src="<?php echo esc_url( $cat_image ); ?>"
+					     alt="<?php echo esc_attr( $cat_name ); ?>">
+					<div class="absolute inset-0 bento-gradient flex flex-col justify-end p-8">
+						<h3 class="<?php echo esc_attr( $cat_h ); ?> font-bold text-white"><?php echo esc_html( $cat_name ); ?></h3>
 						<div class="flex items-center justify-between mt-4 opacity-0 group-hover:opacity-100 transition-opacity w-fit gap-4">
 							<span class="text-white/80 text-sm"><?php echo esc_html( $cat_count ); ?></span>
 							<span class="material-symbols-outlined text-white">trending_flat</span>
 						</div>
-					<?php else : ?>
-						<span class="material-symbols-outlined text-white mt-2 opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
-					<?php endif; ?>
-				</div>
-			</div>
-		<?php endforeach; ?>
+					</div>
+				</a>
+			<?php endforeach;
+		endif;
+		?>
 	</div>
 </section>
 
@@ -231,51 +227,47 @@ $fallback_products = array(
 
 	<div class="flex gap-8 overflow-x-auto pb-8 px-6 no-scrollbar snap-x" id="products-scroll">
 		<?php
-		$use_products = ! empty( $products );
-		$product_list = $use_products ? $products : $fallback_products;
-
-		foreach ( $product_list as $i => $product ) :
-			$fb = $fallback_products[ $i ] ?? $fallback_products[0];
-
-			if ( $use_products ) {
+		if ( empty( $products ) ) :
+			?>
+			<div class="min-w-full flex items-center justify-center rounded-3xl bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 py-16 px-8 text-center">
+				<p><?php esc_html_e( 'Add products in WooCommerce to display them here.', 'luxe-landscape' ); ?></p>
+			</div>
+		<?php
+		else :
+			foreach ( $products as $product ) :
 				$prod_name  = $product->get_name();
-				$prod_image = wp_get_attachment_url( $product->get_image_id() ) ?: $fb['image'];
+				$prod_img_id = $product->get_image_id();
+				$prod_image = $prod_img_id ? wp_get_attachment_url( $prod_img_id ) : ( function_exists( 'wc_placeholder_img_src' ) ? wc_placeholder_img_src( 'full' ) : '' );
 				$prod_price = wc_price( $product->get_price() );
 				$prod_sale  = $product->is_on_sale() ? wc_price( $product->get_regular_price() ) : '';
 				$prod_badge = $product->is_on_sale() ? __( 'SALE', 'luxe-landscape' ) : '';
 				$prod_url   = get_permalink( $product->get_id() );
-			} else {
-				$prod_name  = $fb['name'];
-				$prod_image = $fb['image'];
-				$prod_price = $fb['price'];
-				$prod_sale  = $fb['old'];
-				$prod_badge = $fb['badge'];
-				$prod_url   = '#';
-			}
-		?>
-			<div class="min-w-[320px] snap-start group">
-				<a href="<?php echo esc_url( $prod_url ); ?>">
-					<div class="relative aspect-square bg-white dark:bg-slate-900 rounded-3xl overflow-hidden mb-4">
-						<img class="w-full h-full object-cover transition-transform group-hover:scale-105"
-						     src="<?php echo esc_url( $prod_image ); ?>"
-						     alt="<?php echo esc_attr( $prod_name ); ?>">
-						<?php if ( $prod_badge ) : ?>
-							<span class="absolute top-4 left-4 bg-primary text-slate-900 font-bold px-3 py-1 rounded-full text-xs"><?php echo esc_html( $prod_badge ); ?></span>
+			?>
+				<div class="min-w-[320px] snap-start group">
+					<a href="<?php echo esc_url( $prod_url ); ?>">
+						<div class="relative aspect-square bg-white dark:bg-slate-900 rounded-3xl overflow-hidden mb-4">
+							<img class="w-full h-full object-cover transition-transform group-hover:scale-105"
+							     src="<?php echo esc_url( $prod_image ); ?>"
+							     alt="<?php echo esc_attr( $prod_name ); ?>">
+							<?php if ( $prod_badge ) : ?>
+								<span class="absolute top-4 left-4 bg-primary text-slate-900 font-bold px-3 py-1 rounded-full text-xs"><?php echo esc_html( $prod_badge ); ?></span>
+							<?php endif; ?>
+							<button class="absolute bottom-4 right-4 size-12 bg-slate-900 text-white rounded-full flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all" aria-label="<?php esc_attr_e( 'Add to cart', 'luxe-landscape' ); ?>">
+								<span class="material-symbols-outlined">add</span>
+							</button>
+						</div>
+					</a>
+					<h4 class="font-bold text-lg"><?php echo esc_html( $prod_name ); ?></h4>
+					<div class="flex items-center gap-3 mt-1">
+						<?php if ( $prod_sale ) : ?>
+							<span class="text-slate-400 line-through"><?php echo wp_kses_post( $prod_sale ); ?></span>
 						<?php endif; ?>
-						<button class="absolute bottom-4 right-4 size-12 bg-slate-900 text-white rounded-full flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all" aria-label="<?php esc_attr_e( 'Add to cart', 'luxe-landscape' ); ?>">
-							<span class="material-symbols-outlined">add</span>
-						</button>
+						<span class="text-xl font-bold text-primary"><?php echo wp_kses_post( $prod_price ); ?></span>
 					</div>
-				</a>
-				<h4 class="font-bold text-lg"><?php echo esc_html( $prod_name ); ?></h4>
-				<div class="flex items-center gap-3 mt-1">
-					<?php if ( $prod_sale ) : ?>
-						<span class="text-slate-400 line-through"><?php echo wp_kses_post( $prod_sale ); ?></span>
-					<?php endif; ?>
-					<span class="text-xl font-bold text-primary"><?php echo wp_kses_post( $prod_price ); ?></span>
 				</div>
-			</div>
-		<?php endforeach; ?>
+			<?php endforeach;
+		endif;
+		?>
 	</div>
 </section>
 
@@ -288,32 +280,38 @@ $fallback_products = array(
 		<p class="text-slate-500 max-w-2xl mx-auto section-subtitle-impact"><?php esc_html_e( 'Quantifying our commitment to excellence and biophilic growth over the last month.', 'luxe-landscape' ); ?></p>
 	</div>
 
+	<?php
+	$impact_1 = absint( get_theme_mod( 'luxe_impact_1', 120 ) );
+	$impact_2 = absint( get_theme_mod( 'luxe_impact_2', 45 ) );
+	$impact_3 = absint( get_theme_mod( 'luxe_impact_3', 1250 ) );
+	$impact_4 = absint( get_theme_mod( 'luxe_impact_4', 8 ) );
+	?>
 	<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="impact-stats">
 		<!-- Stat 1 -->
 		<div class="bg-white dark:bg-[rgba(15,35,42,0.61)] p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] text-center transform hover:-translate-y-2 transition-transform duration-300">
 			<div class="text-5xl font-bold text-primary mb-3 font-display">
-				<span class="stat-number" data-target="120">0</span>+
+				<span class="stat-number" data-target="<?php echo esc_attr( $impact_1 ); ?>">0</span>+
 			</div>
 			<p class="text-slate-600 dark:text-slate-400 font-['Outfit'] font-medium text-lg impact-label-1"><?php esc_html_e( 'Luxury Projects Completed', 'luxe-landscape' ); ?></p>
 		</div>
 		<!-- Stat 2 -->
 		<div class="bg-white dark:bg-[rgba(15,35,42,0.61)] p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] text-center transform hover:-translate-y-2 transition-transform duration-300">
 			<div class="text-5xl font-bold text-primary mb-3 font-display">
-				<span class="stat-number" data-target="45">0</span>
+				<span class="stat-number" data-target="<?php echo esc_attr( $impact_2 ); ?>">0</span>
 			</div>
 			<p class="text-slate-600 dark:text-slate-400 font-['Outfit'] font-medium text-lg impact-label-2"><?php esc_html_e( 'New Premium Clients', 'luxe-landscape' ); ?></p>
 		</div>
 		<!-- Stat 3 -->
 		<div class="bg-white dark:bg-[rgba(15,35,42,0.61)] p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] text-center transform hover:-translate-y-2 transition-transform duration-300">
 			<div class="text-5xl font-bold text-primary mb-3 font-display">
-				<span class="stat-number" data-target="1250">0</span>+
+				<span class="stat-number" data-target="<?php echo esc_attr( $impact_3 ); ?>">0</span>+
 			</div>
 			<p class="text-slate-600 dark:text-slate-400 font-['Outfit'] font-medium text-lg impact-label-3"><?php esc_html_e( 'Products Delivered', 'luxe-landscape' ); ?></p>
 		</div>
 		<!-- Stat 4 -->
 		<div class="bg-white dark:bg-[rgba(15,35,42,0.61)] p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] text-center transform hover:-translate-y-2 transition-transform duration-300">
 			<div class="text-5xl font-bold text-primary mb-3 font-display">
-				<span class="stat-number" data-target="8">0</span>
+				<span class="stat-number" data-target="<?php echo esc_attr( $impact_4 ); ?>">0</span>
 			</div>
 			<p class="text-slate-600 dark:text-slate-400 font-['Outfit'] font-medium text-lg impact-label-4"><?php esc_html_e( 'Global Partner Factories', 'luxe-landscape' ); ?></p>
 		</div>
@@ -325,6 +323,23 @@ $fallback_products = array(
      ==================================================== -->
 <section class="max-w-7xl mx-auto px-6 py-24" id="b2b-section">
 	<div class="bg-neutral-charcoal text-white rounded-[3rem] p-12 lg:p-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+		<?php
+		$luxe_b2b_status = isset( $_GET['luxe_b2b'] ) ? sanitize_text_field( wp_unslash( $_GET['luxe_b2b'] ) ) : '';
+		if ( $luxe_b2b_status ) :
+			$notice_class = $luxe_b2b_status === 'success' ? 'bg-emerald-500/20 text-emerald-200' : ( $luxe_b2b_status === 'invalid' ? 'bg-amber-500/20 text-amber-200' : 'bg-red-500/20 text-red-200' );
+		?>
+			<div class="lg:col-span-2 rounded-2xl p-4 text-center <?php echo esc_attr( $notice_class ); ?>">
+				<?php
+				if ( $luxe_b2b_status === 'success' ) {
+					esc_html_e( "Thank you, we'll contact you soon.", 'luxe-landscape' );
+				} elseif ( $luxe_b2b_status === 'invalid' ) {
+					esc_html_e( 'Please fill in your name and phone.', 'luxe-landscape' );
+				} else {
+					esc_html_e( 'Something went wrong. Please try again.', 'luxe-landscape' );
+				}
+				?>
+			</div>
+		<?php endif; ?>
 		<!-- B2B Content -->
 		<div class="space-y-8">
 			<span class="text-primary font-bold tracking-[0.2em] uppercase b2b-label"><?php esc_html_e( 'B2B & Projects', 'luxe-landscape' ); ?></span>
@@ -332,12 +347,12 @@ $fallback_products = array(
 			<p class="text-slate-400 text-lg b2b-desc"><?php esc_html_e( 'We partner with architects, real estate developers, and hospitality giants to provide bespoke landscaping solutions at scale.', 'luxe-landscape' ); ?></p>
 			<div class="flex items-center gap-8 pt-4">
 				<div class="flex flex-col">
-					<span class="text-3xl font-bold text-white">500+</span>
+					<span class="text-3xl font-bold text-white"><?php echo esc_html( get_theme_mod( 'luxe_b2b_stat_1', '500+' ) ); ?></span>
 					<span class="text-slate-500 text-sm b2b-stat-label-1"><?php esc_html_e( 'Hotel Projects', 'luxe-landscape' ); ?></span>
 				</div>
 				<div class="w-px h-12 bg-slate-800"></div>
 				<div class="flex flex-col">
-					<span class="text-3xl font-bold text-white">15yr</span>
+					<span class="text-3xl font-bold text-white"><?php echo esc_html( get_theme_mod( 'luxe_b2b_stat_2', '15yr' ) ); ?></span>
 					<span class="text-slate-500 text-sm b2b-stat-label-2"><?php esc_html_e( 'Contract Life', 'luxe-landscape' ); ?></span>
 				</div>
 			</div>
@@ -345,13 +360,15 @@ $fallback_products = array(
 
 		<!-- B2B Form -->
 		<div class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
-			<form class="space-y-6">
+			<form class="space-y-6" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+				<?php wp_nonce_field( 'luxe_b2b_submit', 'luxe_b2b_nonce' ); ?>
+				<input type="hidden" name="action" value="luxe_b2b_submit" />
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<input class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Full Name', 'luxe-landscape' ); ?>" type="text">
-					<input class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Project Size (sqm)', 'luxe-landscape' ); ?>" type="text">
+					<input name="luxe_b2b_name" class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Full Name', 'luxe-landscape' ); ?>" type="text" required>
+					<input name="luxe_b2b_project_size" class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Project Size (sqm)', 'luxe-landscape' ); ?>" type="text">
 				</div>
-				<input class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Phone Number', 'luxe-landscape' ); ?>" type="tel">
-				<textarea class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Tell us about your project', 'luxe-landscape' ); ?>" rows="3"></textarea>
+				<input name="luxe_b2b_phone" class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Phone Number', 'luxe-landscape' ); ?>" type="tel" required>
+				<textarea name="luxe_b2b_message" class="w-full bg-white/5 border-white/10 rounded-xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-primary focus:border-primary" placeholder="<?php esc_attr_e( 'Tell us about your project', 'luxe-landscape' ); ?>" rows="3"></textarea>
 				<button class="w-full bg-primary text-slate-900 font-bold py-5 rounded-xl transition-all hover:bg-primary/90 b2b-submit" type="submit">
 					<?php esc_html_e( 'Request Project Quote', 'luxe-landscape' ); ?>
 				</button>

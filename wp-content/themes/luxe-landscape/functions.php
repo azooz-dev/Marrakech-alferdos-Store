@@ -390,3 +390,115 @@ function luxe_landscape_footer_customizer($wp_customize)
 		'label' => __('Newsletter Form Action URL (e.g. Mailchimp)', 'luxe-landscape'),
 	));
 }
+
+/* ============================================
+ CUSTOMIZER: Homepage Settings
+ ============================================ */
+add_action('customize_register', 'luxe_landscape_homepage_customizer');
+function luxe_landscape_homepage_customizer($wp_customize)
+{
+	$wp_customize->add_section('luxe_homepage_settings', array(
+		'title'    => __('Homepage Dynamic Content', 'luxe-landscape'),
+		'priority' => 165,
+	));
+
+	// --- Hero: Featured Product ---
+	$wp_customize->add_setting('luxe_hero_featured_product', array(
+		'default'           => 0,
+		'sanitize_callback' => 'absint',
+	));
+	$hero_choices = array( 0 => __('— None —', 'luxe-landscape') );
+	if (class_exists('WooCommerce') && function_exists('wc_get_products')) {
+		$product_ids = wc_get_products(array(
+			'limit'  => -1,
+			'status' => 'publish',
+			'return'  => 'ids',
+		));
+		foreach ($product_ids as $id) {
+			$product = wc_get_product($id);
+			if ($product) {
+				$hero_choices[$id] = $product->get_name();
+			}
+		}
+	}
+	$wp_customize->add_control('luxe_hero_featured_product', array(
+		'type'    => 'select',
+		'section' => 'luxe_homepage_settings',
+		'label'   => __('Featured Product (Hero Card)', 'luxe-landscape'),
+		'choices' => $hero_choices,
+	));
+
+	// --- Impact Stats (4 numbers) ---
+	$impact_defaults = array( 120, 45, 1250, 8 );
+	for ($i = 1; $i <= 4; $i++) {
+		$wp_customize->add_setting('luxe_impact_' . $i, array(
+			'default'           => $impact_defaults[$i - 1],
+			'sanitize_callback'  => 'absint',
+		));
+		$wp_customize->add_control('luxe_impact_' . $i, array(
+			'type'    => 'number',
+			'section' => 'luxe_homepage_settings',
+			'label'   => sprintf(__('Impact Stat %d', 'luxe-landscape'), $i),
+			'input_attrs' => array( 'min' => 0, 'step' => 1 ),
+		));
+	}
+
+	// --- B2B Stats (2 values) ---
+	$wp_customize->add_setting('luxe_b2b_stat_1', array(
+		'default'           => '500+',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_control('luxe_b2b_stat_1', array(
+		'type'    => 'text',
+		'section' => 'luxe_homepage_settings',
+		'label'   => __('B2B Stat 1 (e.g. 500+)', 'luxe-landscape'),
+	));
+	$wp_customize->add_setting('luxe_b2b_stat_2', array(
+		'default'           => '15yr',
+		'sanitize_callback' => 'sanitize_text_field',
+	));
+	$wp_customize->add_control('luxe_b2b_stat_2', array(
+		'type'    => 'text',
+		'section' => 'luxe_homepage_settings',
+		'label'   => __('B2B Stat 2 (e.g. 15yr)', 'luxe-landscape'),
+	));
+}
+
+/* ============================================
+ B2B FORM HANDLER (admin_post)
+ ============================================ */
+add_action('admin_post_nopriv_luxe_b2b_submit', 'luxe_handle_b2b_submit');
+add_action('admin_post_luxe_b2b_submit', 'luxe_handle_b2b_submit');
+function luxe_handle_b2b_submit()
+{
+	if (!isset($_POST['luxe_b2b_nonce']) || !wp_verify_nonce($_POST['luxe_b2b_nonce'], 'luxe_b2b_submit')) {
+		wp_safe_redirect(add_query_arg('luxe_b2b', 'error', home_url('/')));
+		exit;
+	}
+	$name         = isset($_POST['luxe_b2b_name']) ? sanitize_text_field(wp_unslash($_POST['luxe_b2b_name'])) : '';
+	$project_size = isset($_POST['luxe_b2b_project_size']) ? sanitize_text_field(wp_unslash($_POST['luxe_b2b_project_size'])) : '';
+	$phone        = isset($_POST['luxe_b2b_phone']) ? sanitize_text_field(wp_unslash($_POST['luxe_b2b_phone'])) : '';
+	$message      = isset($_POST['luxe_b2b_message']) ? sanitize_textarea_field(wp_unslash($_POST['luxe_b2b_message'])) : '';
+
+	if (empty($name) || empty($phone)) {
+		wp_safe_redirect(add_query_arg('luxe_b2b', 'invalid', home_url('/')));
+		exit;
+	}
+
+	$subject = sprintf(__('B2B Quote Request from %s', 'luxe-landscape'), get_bloginfo('name'));
+	$body    = sprintf(
+		"%s: %s\n%s: %s\n%s: %s\n%s:\n%s",
+		__('Name', 'luxe-landscape'),
+		$name,
+		__('Project Size (sqm)', 'luxe-landscape'),
+		$project_size,
+		__('Phone', 'luxe-landscape'),
+		$phone,
+		__('Message', 'luxe-landscape'),
+		wp_strip_all_tags($message)
+	);
+	wp_mail(get_option('admin_email'), $subject, $body);
+
+	wp_safe_redirect(add_query_arg('luxe_b2b', 'success', home_url('/')));
+	exit;
+}
