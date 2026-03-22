@@ -31,15 +31,11 @@
 		'.nav-products': { en: 'Products', ar: 'المنتجات' },
 
 		// Hero
-		'.hero-badge-text': { en: 'DIRECT FROM MANUFACTURER', ar: 'مباشرة من المصنع' },
+		'.hero-accent-line': { en: 'Direct from Factory', ar: 'مباشرة من المصنع' },
 		'.hero-title-1': { en: 'Transform Your Space with', ar: 'حوّل مساحتك مع' },
-		'.hero-title-accent': { en: 'Factory-Direct', ar: 'فخامة المصنع' },
-		'.hero-title-2': { en: 'Luxury', ar: 'المباشرة' },
 		'.hero-subtitle': { en: 'Experience the pinnacle of biophilic design with our ultra-premium outdoor collections, engineered for the world\'s most prestigious properties.', ar: 'استمتع بقمة التصميم البيوفيلي مع مجموعاتنا الخارجية الفاخرة، المصممة لأرقى العقارات في العالم.' },
 		'.hero-cta-shop': { en: 'Shop Collection', ar: 'تسوق المجموعة' },
 		'.hero-cta-b2b': { en: 'Request B2B Quote', ar: 'طلب عرض أسعار' },
-		'.hero-featured-label': { en: 'Featured Piece', ar: 'القطعة المميزة' },
-		'.hero-featured-name': { en: 'The Zenith Fountain', ar: 'نافورة زينيث' },
 
 		// Categories
 		'.section-title-categories': { en: 'Explore Our World', ar: 'استكشف عالمنا' },
@@ -96,18 +92,25 @@
 		'.auth-footer-2': { en: 'Terms of Service', ar: 'شروط الخدمة' },
 		'.auth-footer-3': { en: 'Support', ar: 'الدعم' },
 
-		// Projects Page
-		'.projects-filter-title': { en: 'Filters', ar: 'التصفية' },
-		'.projects-cat-label': { en: 'Categories', ar: 'الفئات' },
-		'.projects-cta-title': { en: 'Bespoke Design', ar: 'تصميم مخصص' },
-		'.projects-cta-desc': { en: 'Request a personalized landscape consultation with our lead designers.', ar: 'اطلب استشارة تصميم مخصصة مع مصممينا الرئيسيين.' },
-		'.projects-cta-btn': { en: 'Book Now', ar: 'احجز الآن' },
-		'.projects-hero-label': { en: 'New Collection 2024', ar: 'مجموعة جديدة 2024' },
-		'.projects-hero-title': { en: 'Curated Outdoor Elegance', ar: 'أناقة خارجية منتقاة' },
-		'.projects-hero-desc': { en: 'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.', ar: 'ارتقِ بمساحاتك الخارجية مع منحوتاتنا الحجرية ونباتاتنا النادرة.' },
-		'.projects-sort-btn': { en: 'Sort by: Featured', ar: 'ترتيب: مميز' },
-		'.projects-avail-btn': { en: 'Availability', ar: 'التوفر' },
-		'.projects-eco-btn': { en: 'Eco-Friendly', ar: 'صديق للبيئة' },
+		// Products Page
+		'.products-filter-title': { en: 'Filters', ar: 'التصفية' },
+		'.products-cat-label': { en: 'Categories', ar: 'الفئات' },
+		'.products-cta-title': { en: 'Bespoke Design', ar: 'تصميم مخصص' },
+		'.products-cta-desc': { en: 'Request a personalized landscape consultation with our lead designers.', ar: 'اطلب استشارة تصميم مخصصة مع مصممينا الرئيسيين.' },
+		'.products-cta-btn': { en: 'Book Now', ar: 'احجز الآن' },
+		'.products-hero-label': { en: 'New Collection 2024', ar: 'مجموعة جديدة 2024' },
+		'.products-hero-title': { en: 'Curated Outdoor Elegance', ar: 'أناقة خارجية منتقاة' },
+		'.products-hero-desc': { en: 'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.', ar: 'ارتقِ بمساحاتك الخارجية مع منحوتاتنا الحجرية ونباتاتنا النادرة.' },
+		'.products-sort-btn-label': { en: 'Sort by: Featured', ar: 'ترتيب حسب: مميز' },
+		'.products-avail-btn-label': { en: 'Availability: All', ar: 'التوفر: الكل' },
+		'.products-sort-opt-menu_order': { en: 'Featured', ar: 'مميز' },
+		'.products-sort-opt-price': { en: 'Price: Low to High', ar: 'السعر: من الأقل إلى الأعلى' },
+		'.products-sort-opt-price-desc': { en: 'Price: High to Low', ar: 'السعر: من الأعلى إلى الأقل' },
+		'.products-sort-opt-date': { en: 'Newest', ar: 'الأحدث' },
+		'.products-stock-opt-all': { en: 'All', ar: 'الكل' },
+		'.products-stock-opt-instock': { en: 'In Stock Only', ar: 'المتوفر فقط' },
+		'.products-stock-opt-outofstock': { en: 'Out of Stock Only', ar: 'غير المتوفر فقط' },
+		'.products-eco-btn': { en: 'Eco-Friendly', ar: 'صديق للبيئة' },
 
 		// Single Product Page
 		'.product-stock-badge': { en: 'In Stock', ar: 'متوفر' },

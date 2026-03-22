@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Luxe Landscape Theme Functions
  *
@@ -126,13 +127,17 @@ function luxe_landscape_scripts()
 	wp_enqueue_script('luxe-header', $theme_uri . '/assets/js/header.js', array(), $theme_version, true);
 	wp_enqueue_script('luxe-dark-mode', $theme_uri . '/assets/js/dark-mode.js', array(), $theme_version, true);
 	wp_enqueue_script('luxe-smooth-scroll', $theme_uri . '/assets/js/smooth-scroll.js', array(), $theme_version, true);
-	wp_enqueue_script('luxe-lang-toggle', $theme_uri . '/assets/js/lang-toggle.js', array(), $theme_version, true);
 
 	// Front page only JS
 	if (is_front_page()) {
 		wp_enqueue_script('luxe-gsap-animations', $theme_uri . '/assets/js/gsap-animations.js', array('gsap', 'gsap-scroll-trigger'), $theme_version, true);
 		wp_enqueue_script('luxe-impact-counter', $theme_uri . '/assets/js/impact-counter.js', array(), $theme_version, true);
 		wp_enqueue_script('luxe-carousel', $theme_uri . '/assets/js/carousel.js', array(), $theme_version, true);
+	}
+
+	// Products archive filter dropdowns
+	if (function_exists('is_shop') && (is_shop() || is_product_category())) {
+		wp_enqueue_script('luxe-products-filter', $theme_uri . '/assets/js/products-filter.js', array(), $theme_version, true);
 	}
 
 	// Enqueue intl-tel-input JS and init script
@@ -164,14 +169,14 @@ function luxe_landscape_dark_mode_init()
 {
 ?>
 	<script>
-		(function(){
+		(function() {
 			var theme = localStorage.getItem('theme');
 			if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 				document.documentElement.classList.add('dark');
 			}
 		})();
 	</script>
-	<?php
+<?php
 }
 
 /* ============================================
@@ -192,12 +197,48 @@ if (class_exists('WooCommerce')) {
 
 	// Products per row + per page
 	add_filter('loop_shop_columns', function () {
-		return 4; });
+		return 3;
+	});
 	add_filter('loop_shop_per_page', function () {
-		return 12; });
+		return 12;
+	});
+
+	// Remove native WooCommerce sorting dropdown from shop/category archives
+	remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+	// Remove native WooCommerce result count text (e.g. "Showing the single result")
+	remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 
 	// Remove sidebar
 	remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+}
+
+/* ============================================
+ PRODUCTS ARCHIVE STOCK FILTER
+ ============================================ */
+add_action('pre_get_posts', 'luxe_filter_products_by_stock');
+function luxe_filter_products_by_stock($query)
+{
+	if (is_admin() || ! $query->is_main_query() || ! class_exists('WooCommerce')) {
+		return;
+	}
+
+	if (!(function_exists('is_shop') && (is_shop() || is_product_category()))) {
+		return;
+	}
+
+	$stock = isset($_GET['stock']) ? sanitize_text_field(wp_unslash($_GET['stock'])) : '';
+	if ($stock !== 'instock' && $stock !== 'outofstock') {
+		return;
+	}
+
+	$meta_query = (array) $query->get('meta_query');
+	$meta_query[] = array(
+		'key'     => '_stock_status',
+		'value'   => $stock,
+		'compare' => '=',
+	);
+
+	$query->set('meta_query', $meta_query);
 }
 
 /* ============================================
@@ -223,12 +264,8 @@ class Luxe_Landscape_Nav_Walker extends Walker_Nav_Menu
 		$output .= '<a class="text-sm font-semibold hover:text-primary transition-colors" href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
 	}
 
-	public function start_lvl(&$output, $depth = 0, $args = null)
-	{
-	}
-	public function end_lvl(&$output, $depth = 0, $args = null)
-	{
-	}
+	public function start_lvl(&$output, $depth = 0, $args = null) {}
+	public function end_lvl(&$output, $depth = 0, $args = null) {}
 }
 
 /* ============================================
@@ -402,34 +439,19 @@ function luxe_landscape_homepage_customizer($wp_customize)
 		'priority' => 165,
 	));
 
-	// --- Hero: Featured Product ---
-	$wp_customize->add_setting('luxe_hero_featured_product', array(
-		'default'           => 0,
-		'sanitize_callback' => 'absint',
+	// --- Hero: background video ---
+	$wp_customize->add_setting('luxe_hero_video', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
 	));
-	$hero_choices = array( 0 => __('— None —', 'luxe-landscape') );
-	if (class_exists('WooCommerce') && function_exists('wc_get_products')) {
-		$product_ids = wc_get_products(array(
-			'limit'  => -1,
-			'status' => 'publish',
-			'return'  => 'ids',
-		));
-		foreach ($product_ids as $id) {
-			$product = wc_get_product($id);
-			if ($product) {
-				$hero_choices[$id] = $product->get_name();
-			}
-		}
-	}
-	$wp_customize->add_control('luxe_hero_featured_product', array(
-		'type'    => 'select',
-		'section' => 'luxe_homepage_settings',
-		'label'   => __('Featured Product (Hero Card)', 'luxe-landscape'),
-		'choices' => $hero_choices,
-	));
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'luxe_hero_video', array(
+		'label'       => __('Hero Background Video', 'luxe-landscape'),
+		'description' => __('Upload an MP4 video for the homepage hero background.', 'luxe-landscape'),
+		'section'     => 'luxe_homepage_settings',
+	)));
 
 	// --- Impact Stats (4 numbers) ---
-	$impact_defaults = array( 120, 45, 1250, 8 );
+	$impact_defaults = array(120, 45, 1250, 8);
 	for ($i = 1; $i <= 4; $i++) {
 		$wp_customize->add_setting('luxe_impact_' . $i, array(
 			'default'           => $impact_defaults[$i - 1],
@@ -439,7 +461,7 @@ function luxe_landscape_homepage_customizer($wp_customize)
 			'type'    => 'number',
 			'section' => 'luxe_homepage_settings',
 			'label'   => sprintf(__('Impact Stat %d', 'luxe-landscape'), $i),
-			'input_attrs' => array( 'min' => 0, 'step' => 1 ),
+			'input_attrs' => array('min' => 0, 'step' => 1),
 		));
 	}
 
@@ -501,4 +523,195 @@ function luxe_handle_b2b_submit()
 
 	wp_safe_redirect(add_query_arg('luxe_b2b', 'success', home_url('/')));
 	exit;
+}
+
+/* ============================================
+ POLYLANG STRING TRANSLATIONS
+ ============================================ */
+if (!function_exists('pll__')) {
+	function pll__($string)
+	{
+		return __($string, 'luxe-landscape');
+	}
+}
+
+if (!function_exists('pll_e')) {
+	function pll_e($string)
+	{
+		echo esc_html(pll__($string));
+	}
+}
+
+add_action('init', 'luxe_landscape_register_polylang_strings', 20);
+function luxe_landscape_register_polylang_strings()
+{
+	if (!function_exists('pll_register_string')) {
+		return;
+	}
+
+	$groups = array(
+		'Header' => array(
+			'Home',
+			'Collections',
+			'Wholesale',
+			'Products',
+			'Switch language',
+			'Toggle dark mode',
+			'My Account',
+			'Account',
+			'Sign In',
+			'Cart',
+			'Open menu',
+			'Close menu',
+		),
+		'Home Hero' => array(
+			'Direct from Factory',
+			'Transform Your Space with',
+			'Maraken alferdos',
+			'Luxury',
+			'Experience the pinnacle of biophilic design with our ultra-premium outdoor collections, engineered for the world\'s most prestigious properties.',
+			'Shop Collection',
+			'Request B2B Quote',
+			'Featured Piece',
+			'Luxury garden setup',
+			'Set featured product in Customizer → Homepage Settings.',
+			'Featured Piece',
+			'Luxury garden setup',
+			'Set featured product in Customizer → Homepage Settings.',
+			'Featured Piece',
+			'Luxury garden setup',
+			'Set featured product in Customizer → Homepage Settings.',
+			'Featured Piece',
+			'Luxury garden setup',
+			'Set featured product in Customizer → Homepage Settings.',
+			'Featured Piece',
+			'Luxury garden setup',
+			'Set featured product in Customizer → Homepage Settings.',
+		),
+		'Home Categories' => array(
+			'Explore Our World',
+			'Curated categories for professional landscaping.',
+			'View All Categories',
+			'Products',
+			'Add product categories in WooCommerce to display them here.',
+			'Illuminated Planters',
+			'Modern Fountains',
+			'Collection 2024',
+			'Garden Seating',
+			'Stone Waterfalls',
+		),
+		'Home Trending' => array(
+			'Trending Now',
+			'Previous',
+			'Next',
+			'Add products in WooCommerce to display them here.',
+			'SALE',
+			'Add to cart',
+		),
+		'Home Impact' => array(
+			'Our Impact in Numbers',
+			'Quantifying our commitment to excellence and biophilic growth over the last month.',
+			'Luxury Projects Completed',
+			'New Premium Clients',
+			'Products Delivered',
+			'Global Partner Factories',
+		),
+		'Home B2B' => array(
+			'B2B & Projects',
+			'Building a Mega Project? Get Direct Factory Pricing.',
+			'We partner with architects, real estate developers, and hospitality giants to provide bespoke landscaping solutions at scale.',
+			'Hotel Projects',
+			'Contract Life',
+			'Full Name',
+			'Project Size (sqm)',
+			'Phone Number',
+			'Tell us about your project',
+			'Request Project Quote',
+			'Thank you, we\'ll contact you soon.',
+			'Please fill in your name and phone.',
+			'Something went wrong. Please try again.',
+		),
+		'Products Page' => array(
+			'Filters',
+			'Categories',
+			'All Collections',
+			'Bespoke Design',
+			'Request a personalized landscape consultation with our lead designers.',
+			'Book Now',
+			'New Collection 2024',
+			'Curated Outdoor Elegance',
+			'Elevate your exterior spaces with our hand-carved stone features and rare botanicals.',
+			'products',
+			'Sort by: %s',
+			'Availability: %s',
+			'Eco-Friendly',
+			'Featured',
+			'Price: Low to High',
+			'Price: High to Low',
+			'Newest',
+			'All',
+			'In Stock Only',
+			'Out of Stock Only',
+		),
+		'Single Product' => array(
+			'In Stock',
+			'Out of Stock',
+			'Quantity',
+			'100% Natural Material',
+			'Low-Voltage Pump',
+			'Add to Cart',
+			'View in 3D / AR',
+			'SKU:',
+			'Category:',
+			'Sustainability Footprint',
+			'Recycled Water Use',
+			'CO2 Offset / Unit',
+			'Technical Specifications',
+			'Dimensions',
+			'Material',
+			'Weight',
+			'Quality',
+			'Premium Grade',
+			'Handcrafted',
+			'N/A',
+			'You May Also Like',
+			'Sale',
+		),
+		'Footer' => array(
+			'LUXE LANDSCAPE',
+			'Crafting the future of biophilic luxury with factory-direct ethics and sustainable engineering.',
+			'Subscribe to our Design Journal',
+			'Join',
+			'Support',
+			'Social',
+			'Outdoor Sculptures',
+			'Vertical Gardens',
+			'Water Features',
+			'Premium Soil',
+			'Track Order',
+			'Wholesale Portal',
+			'Warranty Policy',
+			'Contact Expert',
+			'Secure Checkout',
+			'Fast Shipping',
+			'10 Year Warranty',
+			'Luxe Landscape Factory Group. All rights reserved.',
+		),
+	);
+
+	foreach ($groups as $group => $strings) {
+		foreach ($strings as $string) {
+			pll_register_string($group . ': ' . $string, $string, $group);
+		}
+	}
+}
+
+add_filter('gettext', 'luxe_landscape_polylang_gettext_bridge', 15, 3);
+function luxe_landscape_polylang_gettext_bridge($translated_text, $text, $domain)
+{
+	if ($domain !== 'luxe-landscape' || !function_exists('pll__')) {
+		return $translated_text;
+	}
+
+	return pll__($text);
 }

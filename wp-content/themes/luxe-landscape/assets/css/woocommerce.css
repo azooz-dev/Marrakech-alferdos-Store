@@ -20,13 +20,19 @@
 }
 
 @media (min-width: 768px) {
-	.wc-products-grid { grid-template-columns: repeat(2, 1fr); }
+	.wc-products-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 @media (min-width: 1024px) {
-	.wc-products-grid { grid-template-columns: repeat(3, 1fr); }
+	.wc-products-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 @media (min-width: 1280px) {
-	.wc-products-grid { grid-template-columns: repeat(4, 1fr); }
+	.wc-products-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 /* ============================================
@@ -42,7 +48,9 @@
 }
 
 @media (min-width: 1024px) {
-	.wc-single-product { grid-template-columns: 1fr 1fr; }
+	.wc-single-product {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 /* ============================================
@@ -96,4 +104,118 @@
 
 .woocommerce-error li {
 	list-style: none;
+}
+
+/* ============================================
+  BUTTONS
+  ============================================ */
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 3.5rem;
+	padding: 0 1.5rem;
+	border: 0;
+	border-radius: 0.75rem;
+	background: #11d462;
+	color: #0f172a;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+	background: #0fbe59;
+}
+
+.btn-outline {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 3.5rem;
+	padding: 0 1.5rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 0.75rem;
+	background: transparent;
+	color: #334155;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+	background: rgba(15, 23, 42, 0.04);
+}
+
+.dark .btn-outline {
+	border-color: #334155;
+	color: #e2e8f0;
+}
+
+.dark .btn-outline:hover {
+	background: rgba(148, 163, 184, 0.08);
+}
+
+/* ============================================
+  CART PAGE ENHANCEMENTS
+  ============================================ */
+.wc-cart-quantity-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 9999px;
+	border: 1px solid #e2e8f0;
+	background: #f8fafc;
+}
+
+.dark .wc-cart-quantity-pill {
+	border-color: #334155;
+	background: #0f172a;
+}
+
+.wc-cart-qty-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border: 0;
+	background: transparent;
+	color: #64748b;
+	border-radius: 9999px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.wc-cart-qty-btn:hover {
+	color: #0f172a;
+	background: rgba(17, 212, 98, 0.1);
+}
+
+.dark .wc-cart-qty-btn:hover {
+	color: #f8fafc;
+}
+
+.wc-cart-qty-input {
+	width: 2.75rem;
+	border: 0;
+	background: transparent;
+	text-align: center;
+	font-weight: 700;
+	color: #0f172a;
+	appearance: textfield;
+	-moz-appearance: textfield;
+}
+
+.dark .wc-cart-qty-input {
+	color: #f8fafc;
+}
+
+.wc-cart-qty-input::-webkit-outer-spin-button,
+.wc-cart-qty-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
