@@ -56,6 +56,9 @@ luxe_landscape_get_header();
 	$weight     = $product->get_weight();
 	$dimensions = $product->get_dimensions();
 	$max_purchase_quantity = $product->get_max_purchase_quantity();
+
+	// AR / 3D viewer (Custom Fields meta key: "AR link")
+	$ar_viewer_url = esc_url( trim( (string) $product->get_meta( 'AR link', true ) ) );
 	?>
 
 	<!-- ====================================================
@@ -176,33 +179,39 @@ luxe_landscape_get_header();
 										<span class="material-symbols-outlined">add_shopping_cart</span>
 										<span class="product-add-to-cart-text"><?php pll_e('Add to Cart'); ?></span>
 									</button>
-									<button type="button" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer">
-										<span class="material-symbols-outlined">view_in_ar</span>
-										<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
-										<span class="material-symbols-outlined text-sm">open_in_new</span>
-									</button>
+									<?php if ( $ar_viewer_url ) : ?>
+										<a href="<?php echo esc_url( $ar_viewer_url ); ?>" target="_blank" rel="noopener noreferrer" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline" aria-label="<?php echo esc_attr( pll__( 'View in 3D / AR' ) ); ?>">
+											<span class="material-symbols-outlined" aria-hidden="true">view_in_ar</span>
+											<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
+											<span class="material-symbols-outlined text-sm" aria-hidden="true">open_in_new</span>
+										</a>
+									<?php endif; ?>
 								</div>
 							</form>
 						<?php else : ?>
 							<a href="<?php echo esc_url($product->add_to_cart_url()); ?>" class="flex-1 h-14 bg-primary text-slate-900 rounded-xl font-display font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
 								<?php echo esc_html($product->add_to_cart_text()); ?>
 							</a>
-							<button type="button" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer">
-								<span class="material-symbols-outlined">view_in_ar</span>
-								<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
-								<span class="material-symbols-outlined text-sm">open_in_new</span>
-							</button>
+							<?php if ( $ar_viewer_url ) : ?>
+								<a href="<?php echo esc_url( $ar_viewer_url ); ?>" target="_blank" rel="noopener noreferrer" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline" aria-label="<?php echo esc_attr( pll__( 'View in 3D / AR' ) ); ?>">
+									<span class="material-symbols-outlined" aria-hidden="true">view_in_ar</span>
+									<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
+									<span class="material-symbols-outlined text-sm" aria-hidden="true">open_in_new</span>
+								</a>
+							<?php endif; ?>
 						<?php endif; ?>
 					<?php else : ?>
 						<button type="button" disabled class="flex-1 h-14 bg-slate-300 text-slate-500 rounded-xl font-display font-bold text-lg cursor-not-allowed flex items-center justify-center gap-2">
 							<span class="material-symbols-outlined">remove_shopping_cart</span>
 							<span class="product-out-of-stock-text"><?php pll_e('Out of Stock'); ?></span>
 						</button>
-						<button type="button" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer">
-							<span class="material-symbols-outlined">view_in_ar</span>
-							<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
-							<span class="material-symbols-outlined text-sm">open_in_new</span>
-						</button>
+						<?php if ( $ar_viewer_url ) : ?>
+							<a href="<?php echo esc_url( $ar_viewer_url ); ?>" target="_blank" rel="noopener noreferrer" class="flex-1 h-14 border-2 border-primary text-primary rounded-xl font-display font-bold text-lg hover:bg-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer no-underline" aria-label="<?php echo esc_attr( pll__( 'View in 3D / AR' ) ); ?>">
+								<span class="material-symbols-outlined" aria-hidden="true">view_in_ar</span>
+								<span class="product-ar-btn-text"><?php pll_e('View in 3D / AR'); ?></span>
+								<span class="material-symbols-outlined text-sm" aria-hidden="true">open_in_new</span>
+							</a>
+						<?php endif; ?>
 					<?php endif; ?>
 				</div>
 
