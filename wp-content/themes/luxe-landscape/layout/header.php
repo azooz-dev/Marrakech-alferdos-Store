@@ -35,7 +35,6 @@ if (!defined('ABSPATH')) {
 					<?php
 					else: ?>
 						<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
-						<span class="font-bold text-xl tracking-tighter">LUXE <span class="text-primary/80">LANDSCAPE</span></span>
 					<?php
 					endif; ?>
 				</a>
