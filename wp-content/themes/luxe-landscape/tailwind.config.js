@@ -38,7 +38,7 @@ module.exports = {
 			colors: {
 				primary: "#11d462",
 				"background-light": "#f6f8f7",
-				"background-dark": "#0d47a1",
+				"background-dark": "#212",
 				"neutral-charcoal": "#1a1c1b",
 				alabaster: "#f2f2f2",
 			},
