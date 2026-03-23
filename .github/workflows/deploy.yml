@@ -20,5 +20,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wp-content/themes/luxe-landscape/
-          server-dir: /home/${{ secrets.FTP_USERNAME }}/domains/alfirdus.store/public_html/wp-content/themes/luxe-landscape/
+          server-dir: /files/public_html/wp-content/themes/luxe-landscape/
           port: 21
