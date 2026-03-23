@@ -22,3 +22,4 @@ jobs:
           local-dir: ./wp-content/themes/luxe-landscape/
           server-dir: /wp-content/themes/luxe-landscape/
           port: 21
+          dangerous-clean-slate: true
