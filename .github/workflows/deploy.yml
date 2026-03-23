@@ -21,3 +21,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wp-content/themes/luxe-landscape
           server-dir: /public_html/wp-content/themes/luxe-landscape/
+          port: 21
