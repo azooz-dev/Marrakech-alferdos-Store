@@ -29,15 +29,7 @@ if (!defined('ABSPATH')) {
 		<div class="glass rounded-full px-8 py-4 flex items-center justify-between shadow-lg glass-shimmer dark:bg-background-dark/70">
 			<div class="flex items-center gap-12">
 				<!-- Logo -->
-				<a class="flex items-center gap-2 group" href="<?php echo esc_url(home_url('/')); ?>">
-					<?php if (has_custom_logo()): ?>
-						<?php the_custom_logo(); ?>
-					<?php
-					else: ?>
-						<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
-					<?php
-					endif; ?>
-				</a>
+
 
 				<!-- Primary Navigation -->
 				<div class="hidden md:flex items-center gap-8">
