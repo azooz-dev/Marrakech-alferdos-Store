@@ -13,6 +13,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./wp-content/themes/luxe-landscape/
+
+      - name: Build Tailwind CSS
+        run: npm run build
+        working-directory: ./wp-content/themes/luxe-landscape/
+
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
