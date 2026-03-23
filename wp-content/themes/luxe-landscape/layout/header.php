@@ -26,18 +26,19 @@ if (!defined('ABSPATH')) {
 
 	<!-- Floating Glassmorphism Header -->
 	<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl" id="site-header">
-		<div class="glass rounded-full px-8 py-4 flex items-center justify-between shadow-lg glass-shimmer dark:bg-background-dark/70">
+		<div class="glass rounded-full px-8 py-1 flex items-center justify-between shadow-lg glass-shimmer dark:bg-background-dark/70">
 			<div class="flex items-center gap-12">
 				<!-- Logo -->
-				<a class="flex items-center gap-2 group" href="<?php echo esc_url(home_url('/')); ?>">
-					<?php if (has_custom_logo()): ?>
+				<?php if (has_custom_logo()): ?>
+					<div class="flex items-center gap-2 group">
 						<?php the_custom_logo(); ?>
-					<?php
-					else: ?>
+					</div>
+				<?php else: ?>
+					<a class="flex items-center gap-2 group" href="<?php echo esc_url(home_url('/')); ?>">
 						<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
-					<?php
-					endif; ?>
-				</a>
+						<span class="font-bold text-xl tracking-tighter">LUXE <span class="text-primary/80">LANDSCAPE</span></span>
+					</a>
+				<?php endif; ?>
 
 				<!-- Primary Navigation -->
 				<div class="hidden md:flex items-center gap-8">

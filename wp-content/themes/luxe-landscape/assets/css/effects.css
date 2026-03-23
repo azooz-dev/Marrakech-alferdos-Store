@@ -127,3 +127,43 @@
 .no-scrollbar::-webkit-scrollbar {
 	display: none;
 }
+
+/* ============================================
+   Header Custom Logo Badge (Admin Upload)
+   ============================================ */
+#site-header .custom-logo-link {
+	width: 72px;
+	height: 72px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+
+	border-radius: 9999px;
+	overflow: hidden;
+
+	/* No circular badge background/border (logo-only look) */
+	background: transparent;
+	border: none;
+	box-shadow: none;
+
+	/* Keep filters off so the wrapper doesn't affect logo pixels */
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
+
+#site-header .custom-logo {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: contain !important;
+	display: block;
+}
+
+/* Dark mode override */
+.dark #site-header .custom-logo-link {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
