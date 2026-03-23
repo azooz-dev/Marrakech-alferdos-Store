@@ -1,0 +1,1192 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Luxe Landscape\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-19 21:38+0000\n"
+"PO-Revision-Date: 2026-03-19 21:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.3; wp-6.9.4; php-8.2.27\n"
+"X-Domain: luxe-landscape"
+
+#: layout/footer.php:110 layout/footer.php:132
+msgid "10 Year Warranty"
+msgstr ""
+
+#: woocommerce/single-product.php:130
+msgid "100% Natural Material"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:169
+#: woocommerce/myaccount/my-address.php:181
+msgid "1245 Verdant Way"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:47
+msgid "555-0123"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:194
+#: woocommerce/myaccount/my-address.php:195
+msgid "94105"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"A biophilic luxury WooCommerce theme with dark mode, GSAP animations, and "
+"RTL support. Factory-direct premium outdoor collections."
+msgstr ""
+
+#: pages/template-signin.php:64
+msgid "Abstract dark green tropical leaves pattern"
+msgstr ""
+
+#: layout/header.php:102
+msgid "Account"
+msgstr ""
+
+#: layout/account-sidebar.php:54
+msgid "Account Settings"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:60
+msgid "Active"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:50
+#: woocommerce/myaccount/edit-address.php:143
+#: woocommerce/myaccount/my-address.php:52
+#: woocommerce/myaccount/my-address.php:154
+msgid "Add New Address"
+msgstr ""
+
+#: pages/front-page.php:177
+msgid "Add product categories in WooCommerce to display them here."
+msgstr ""
+
+#: pages/front-page.php:233
+msgid "Add products in WooCommerce to display them here."
+msgstr ""
+
+#: woocommerce/single-product.php:148
+msgid "Add to Cart"
+msgstr ""
+
+#: pages/front-page.php:255
+msgid "Add to cart"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:155
+#: woocommerce/myaccount/my-address.php:166
+msgid "Address Label"
+msgstr ""
+
+#: functions.php:331 layout/account-sidebar.php:45
+msgid "Addresses"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:162
+#: woocommerce/myaccount/my-address.php:173
+msgid "Alexander Sterling"
+msgstr ""
+
+#: layout/products-layout.php:42
+msgid "All"
+msgstr ""
+
+#: layout/products-layout.php:70 pages/template-products.php:51
+#: pages/template-products.php:132
+msgid "All Collections"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:59
+msgid "All Orders"
+msgstr ""
+
+#: pages/template-signup.php:43
+msgid "Already have an account?"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:174
+#: woocommerce/myaccount/my-address.php:198
+msgid "Apartment, suite, etc. (Optional)"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:176
+#: woocommerce/myaccount/my-address.php:200
+msgid "Apt 4B"
+msgstr ""
+
+#: pages/account-favorites.php:27
+msgid "Artisan Planter Set"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:39
+msgid "Artisan Terracotta Planter Set"
+msgstr ""
+
+#: pages/template-products.php:81
+msgid "Artisan Terracotta Trio"
+msgstr ""
+
+#: pages/template-products.php:197
+msgid "Availability"
+msgstr ""
+
+#: layout/products-layout.php:143
+#, php-format
+msgid "Availability: %s"
+msgstr ""
+
+#: pages/front-page.php:345
+msgid "B2B & Projects"
+msgstr ""
+
+#: functions.php:526
+#, php-format
+msgid "B2B Quote Request from %s"
+msgstr ""
+
+#: functions.php:492
+msgid "B2B Stat 1 (e.g. 500+)"
+msgstr ""
+
+#: functions.php:501
+msgid "B2B Stat 2 (e.g. 15yr)"
+msgstr ""
+
+#: layout/products-layout.php:93 pages/template-products.php:159
+msgid "Bespoke Design"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:102
+#: woocommerce/myaccount/my-address.php:108
+msgid "Billing Address"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:113
+#: woocommerce/myaccount/form-edit-account.php:95
+msgid "Biometric Focus"
+msgstr ""
+
+#: layout/products-layout.php:95 pages/template-products.php:161
+msgid "Book Now"
+msgstr ""
+
+#: pages/front-page.php:346
+msgid "Building a Mega Project? Get Direct Factory Pricing."
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:189
+msgid "CA"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:86
+#: woocommerce/myaccount/edit-address.php:226
+#: woocommerce/myaccount/form-edit-account.php:68
+#: woocommerce/myaccount/my-address.php:232
+msgid "Cancel"
+msgstr ""
+
+#: pages/template-products.php:88
+msgid "Carrara Muse Fountain"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:260
+msgid "Carrier"
+msgstr ""
+
+#: layout/header.php:114
+msgid "Cart"
+msgstr ""
+
+#: woocommerce/cart/cart.php:150
+msgid "Cart Totals"
+msgstr ""
+
+#: layout/products-layout.php:61 pages/template-products.php:122
+msgid "Categories"
+msgstr ""
+
+#: woocommerce/single-product.php:180
+msgid "Category:"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:179
+#: woocommerce/myaccount/my-address.php:185
+msgid "City"
+msgstr ""
+
+#: layout/header.php:135
+msgid "Close menu"
+msgstr ""
+
+#: woocommerce/single-product.php:197
+msgid "CO2 Offset / Unit"
+msgstr ""
+
+#: pages/front-page.php:67
+msgid "Collection 2024"
+msgstr ""
+
+#: layout/footer.php:37 layout/header.php:55 layout/header.php:137
+#: woocommerce/single-product.php:46
+msgid "Collections"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:61
+msgid "Completed"
+msgstr ""
+
+#: layout/account-sidebar.php:84
+msgid "Concierge Support"
+msgstr ""
+
+#: layout/footer.php:78
+msgid "Contact Expert"
+msgstr ""
+
+#: layout/account-sidebar.php:86
+msgid "Contact Specialist"
+msgstr ""
+
+#: woocommerce/cart/cart.php:31 woocommerce/cart/cart.php:141
+msgid "Continue Shopping"
+msgstr ""
+
+#: pages/front-page.php:356
+msgid "Contract Life"
+msgstr ""
+
+#: layout/footer.php:25
+msgid ""
+"Crafting the future of biophilic luxury with factory-direct ethics and "
+"sustainable engineering."
+msgstr ""
+
+#: pages/template-signup.php:28
+msgid "Create an account to start your luxury project"
+msgstr ""
+
+#: pages/account-favorites.php:51
+msgid ""
+"Curate your personal collection of biophilic masterpieces and luxury outdoor "
+"accents."
+msgstr ""
+
+#: pages/front-page.php:163
+msgid "Curated categories for professional landscaping."
+msgstr ""
+
+#: layout/products-layout.php:109 pages/template-products.php:180
+msgid "Curated Outdoor Elegance"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:90
+#: woocommerce/myaccount/edit-address.php:129
+#: woocommerce/myaccount/my-address.php:96
+#: woocommerce/myaccount/my-address.php:140
+msgid "Delete"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:248
+msgid "Delivered"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:257
+msgid "Delivery Details"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:186
+msgid "Delivery Progress"
+msgstr ""
+
+#: woocommerce/single-product.php:217
+msgid "Dimensions"
+msgstr ""
+
+#: pages/template-signin.php:47
+msgid "Don't have an account?"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:157
+#: woocommerce/myaccount/my-address.php:168
+msgid "e.g. Home, Office"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:36
+#: woocommerce/myaccount/form-edit-account.php:36
+msgid "e.g. Julian Montgomery"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:120
+#: woocommerce/myaccount/form-edit-account.php:102
+msgid "Eco-Account"
+msgstr ""
+
+#: layout/products-layout.php:158 pages/template-products.php:200
+msgid "Eco-Friendly"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:87
+#: woocommerce/myaccount/edit-address.php:126
+#: woocommerce/myaccount/my-address.php:93
+#: woocommerce/myaccount/my-address.php:137
+msgid "Edit"
+msgstr ""
+
+#: layout/products-layout.php:110 pages/template-products.php:181
+msgid ""
+"Elevate your exterior spaces with our hand-carved stone features and rare "
+"botanicals."
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:60
+#: woocommerce/myaccount/form-edit-account.php:42
+msgid "Email Address"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:106
+#: woocommerce/myaccount/form-edit-account.php:88
+msgid "End-to-End Encryption"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:144
+#: woocommerce/myaccount/my-address.php:155
+msgid "Enter your details for biophilic delivery."
+msgstr ""
+
+#: pages/template-signin.php:28
+msgid "Enter your phone number to access your account"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:273
+msgid "Estimated Arrival"
+msgstr ""
+
+#: pages/front-page.php:102
+msgid ""
+"Experience the pinnacle of biophilic design with our ultra-premium outdoor "
+"collections, engineered for the world's most prestigious properties."
+msgstr ""
+
+#: pages/front-page.php:162
+msgid "Explore Our World"
+msgstr ""
+
+#: pages/front-page.php:98
+msgid "Factory-Direct"
+msgstr ""
+
+#: layout/footer.php:106 layout/footer.php:128
+msgid "Fast Shipping"
+msgstr ""
+
+#: woocommerce/content-product.php:42
+msgid "Favorite"
+msgstr ""
+
+#: functions.php:330 layout/account-sidebar.php:39
+msgid "Favorites"
+msgstr ""
+
+#: layout/products-layout.php:35
+msgid "Featured"
+msgstr ""
+
+#: pages/front-page.php:131
+msgid "Featured Piece"
+msgstr ""
+
+#: functions.php:465
+msgid "Featured Product (Hero Card)"
+msgstr ""
+
+#: layout/products-layout.php:56 pages/template-products.php:116
+msgid "Filters"
+msgstr ""
+
+#: functions.php:33
+msgid "Footer Collections"
+msgstr ""
+
+#: functions.php:386
+msgid "Footer Settings"
+msgstr ""
+
+#: functions.php:34
+msgid "Footer Support"
+msgstr ""
+
+#: functions.php:398
+msgid "Footer Tagline"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:121
+#: woocommerce/myaccount/form-edit-account.php:103
+msgid "For every update, we contribute to local reforestation efforts."
+msgstr ""
+
+#: pages/template-products.php:54
+msgid "Fountains"
+msgstr ""
+
+#: pages/front-page.php:367 woocommerce/myaccount/edit-account.php:32
+#: woocommerce/myaccount/edit-address.php:160
+#: woocommerce/myaccount/form-edit-account.php:32
+#: woocommerce/myaccount/my-address.php:171
+msgid "Full Name"
+msgstr ""
+
+#: pages/front-page.php:73
+msgid "Garden Seating"
+msgstr ""
+
+#: pages/template-products.php:74
+msgid "Glass Cascade Wall"
+msgstr ""
+
+#: pages/front-page.php:316
+msgid "Global Partner Factories"
+msgstr ""
+
+#: pages/account-favorites.php:32
+msgid "Granite Sculptural Bench"
+msgstr ""
+
+#: pages/template-products.php:61
+msgid "Hand-cast architectural vessel"
+msgstr ""
+
+#: pages/template-products.php:82
+msgid "Hand-painted organic finishes"
+msgstr ""
+
+#: woocommerce/single-product.php:239
+msgid "Handcrafted"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:302
+msgid "Help"
+msgstr ""
+
+#: pages/account-favorites.php:42
+msgid "Heritage Olive Tree"
+msgstr ""
+
+#: layout/header.php:54 layout/header.php:136 layout/products-layout.php:116
+#: pages/template-products.php:188 woocommerce/single-product.php:66
+msgid "Home"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:68
+#: woocommerce/myaccount/my-address.php:70
+#: woocommerce/myaccount/my-address.php:87
+msgid "Home Estate"
+msgstr ""
+
+#: functions.php:439
+msgid "Homepage Dynamic Content"
+msgstr ""
+
+#: pages/template-products.php:68
+msgid "Honed basalt with silent pump"
+msgstr ""
+
+#: pages/front-page.php:351
+msgid "Hotel Projects"
+msgstr ""
+
+#. URI of the theme
+#. Author URI of the theme
+msgid "https://luxelandscape.com"
+msgstr ""
+
+#: pages/account-favorites.php:37
+msgid "Illuminated Path Stones"
+msgstr ""
+
+#: pages/front-page.php:59
+msgid "Illuminated Planters"
+msgstr ""
+
+#: functions.php:479
+msgid "Impact Stat %d"
+msgstr ""
+
+#: pages/template-products.php:63 pages/template-products.php:218
+#: woocommerce/content-product.php:26 woocommerce/single-product.php:29
+msgid "In Stock"
+msgstr ""
+
+#: layout/products-layout.php:43
+msgid "In Stock Only"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:281
+msgid "Items in Order"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:64
+#: woocommerce/myaccount/form-edit-account.php:46
+msgid "j.montgomery@example.com"
+msgstr ""
+
+#: layout/footer.php:30
+msgid "Join"
+msgstr ""
+
+#: pages/template-signup.php:27
+msgid "Join Luxe Landscape"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:79
+#: woocommerce/myaccount/form-edit-account.php:61
+#, php-format
+msgid "Last updated: %s"
+msgstr ""
+
+#: functions.php:332 layout/account-sidebar.php:76
+msgid "Logout"
+msgstr ""
+
+#: woocommerce/single-product.php:134
+msgid "Low-Voltage Pump"
+msgstr ""
+
+#: layout/footer.php:23
+msgid "LUXE LANDSCAPE"
+msgstr ""
+
+#. Name of the theme
+#. Author of the theme
+msgid "Luxe Landscape"
+msgstr ""
+
+#: layout/footer.php:113 layout/footer.php:135
+msgid "Luxe Landscape Factory Group. All rights reserved."
+msgstr ""
+
+#: pages/front-page.php:98
+msgid "Luxury"
+msgstr ""
+
+#: pages/front-page.php:141
+msgid "Luxury garden setup"
+msgstr ""
+
+#: pages/template-products.php:52
+msgid "Luxury Planters"
+msgstr ""
+
+#: pages/front-page.php:295
+msgid "Luxury Projects Completed"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:24
+msgid "Manage your biophilic sanctuary settings and preferences."
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:21
+#: woocommerce/myaccount/form-edit-account.php:21
+msgid ""
+"Manage your biophilic sanctuary settings and update your contact preferences "
+"for a seamless luxury experience."
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:45
+#: woocommerce/myaccount/my-address.php:47
+msgid ""
+"Manage your shipping and billing locations for a seamless luxury shopping "
+"experience."
+msgstr ""
+
+#: woocommerce/single-product.php:224
+msgid "Material"
+msgstr ""
+
+#: functions.php:535
+msgid "Message"
+msgstr ""
+
+#: pages/front-page.php:66
+msgid "Modern Fountains"
+msgstr ""
+
+#: pages/account-favorites.php:17
+msgid "Modern Slate Planter"
+msgstr ""
+
+#: layout/header.php:99
+msgid "My Account"
+msgstr ""
+
+#: woocommerce/single-product.php:218 woocommerce/single-product.php:232
+msgid "N/A"
+msgstr ""
+
+#: functions.php:529
+msgid "Name"
+msgstr ""
+
+#: layout/account-sidebar.php:83
+msgid "Need assistance?"
+msgstr ""
+
+#: layout/products-layout.php:108 pages/template-products.php:179
+msgid "New Collection 2024"
+msgstr ""
+
+#: pages/front-page.php:302
+msgid "New Premium Clients"
+msgstr ""
+
+#: layout/products-layout.php:38
+msgid "Newest"
+msgstr ""
+
+#: functions.php:428
+msgid "Newsletter Form Action URL (e.g. Mailchimp)"
+msgstr ""
+
+#: pages/front-page.php:222
+msgid "Next"
+msgstr ""
+
+#: index.php:33
+msgid "No posts found."
+msgstr ""
+
+#: pages/template-products.php:95
+msgid "Obsidian Flow Basin"
+msgstr ""
+
+#: layout/header.php:128
+msgid "Open menu"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:142
+#, php-format
+msgid "Order #%s"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:197
+msgid "Order Placed"
+msgstr ""
+
+#: functions.php:329 layout/account-sidebar.php:33
+msgid "Orders"
+msgstr ""
+
+#: pages/front-page.php:279
+msgid "Our Impact in Numbers"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:236
+msgid "Out for Delivery"
+msgstr ""
+
+#: woocommerce/single-product.php:29 woocommerce/single-product.php:159
+msgid "Out of Stock"
+msgstr ""
+
+#: layout/products-layout.php:44
+msgid "Out of Stock Only"
+msgstr ""
+
+#: layout/footer.php:51
+msgid "Outdoor Sculptures"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:20
+#: woocommerce/myaccount/form-edit-account.php:20
+msgid "Personal Information"
+msgstr ""
+
+#: functions.php:533
+msgid "Phone"
+msgstr ""
+
+#: pages/front-page.php:370 woocommerce/myaccount/edit-account.php:41
+msgid "Phone Number"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:111 woocommerce/myaccount/orders.php:147
+#, php-format
+msgid "Placed on %s"
+msgstr ""
+
+#: pages/front-page.php:336
+msgid "Please fill in your name and phone."
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:192
+#: woocommerce/myaccount/my-address.php:193
+msgid "Postal Code"
+msgstr ""
+
+#: pages/template-products.php:96
+msgid "Powder-coated steel and river stone"
+msgstr ""
+
+#: woocommerce/single-product.php:225
+msgid "Premium Grade"
+msgstr ""
+
+#: layout/footer.php:54
+msgid "Premium Soil"
+msgstr ""
+
+#: pages/front-page.php:219
+msgid "Previous"
+msgstr ""
+
+#: woocommerce/cart/cart.php:43
+msgid "Price"
+msgstr ""
+
+#: layout/products-layout.php:37
+msgid "Price: High to Low"
+msgstr ""
+
+#: layout/products-layout.php:36
+msgid "Price: Low to High"
+msgstr ""
+
+#: functions.php:32
+msgid "Primary Navigation"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:62
+#: woocommerce/myaccount/my-address.php:64
+msgid "Primary Shipping"
+msgstr ""
+
+#: pages/template-signin.php:55
+msgid "Privacy Policy"
+msgstr ""
+
+#: woocommerce/cart/cart.php:200
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:210
+msgid "Processing"
+msgstr ""
+
+#: woocommerce/cart/cart.php:42
+msgid "Product"
+msgstr ""
+
+#: layout/header.php:57 layout/header.php:139 pages/front-page.php:186
+msgid "Products"
+msgstr ""
+
+#: layout/products-layout.php:118 pages/template-products.php:190
+msgid "products"
+msgstr ""
+
+#: pages/front-page.php:309
+msgid "Products Delivered"
+msgstr ""
+
+#. Name of the template
+#: template-products.php:2
+msgid "Products Page"
+msgstr ""
+
+#: functions.php:328 layout/account-sidebar.php:27
+msgid "Profile"
+msgstr ""
+
+#: functions.php:531 pages/front-page.php:368
+msgid "Project Size (sqm)"
+msgstr ""
+
+#: woocommerce/single-product.php:238
+msgid "Quality"
+msgstr ""
+
+#: pages/front-page.php:280
+msgid ""
+"Quantifying our commitment to excellence and biophilic growth over the last "
+"month."
+msgstr ""
+
+#: woocommerce/cart/cart.php:44
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:109 woocommerce/myaccount/orders.php:145
+#, php-format
+msgid "Quantity: %s"
+msgstr ""
+
+#: pages/template-products.php:91 pages/template-products.php:228
+msgid "Rare Piece"
+msgstr ""
+
+#: woocommerce/single-product.php:193
+msgid "Recycled Water Use"
+msgstr ""
+
+#: pages/account-favorites.php:69 woocommerce/cart/cart.php:46
+msgid "Remove"
+msgstr ""
+
+#: woocommerce/cart/cart.php:127
+#, php-format
+msgid "Remove %s from cart"
+msgstr ""
+
+#: layout/products-layout.php:94 pages/template-products.php:160
+msgid "Request a personalized landscape consultation with our lead designers."
+msgstr ""
+
+#: pages/front-page.php:110
+msgid "Request B2B Quote"
+msgstr ""
+
+#: pages/front-page.php:373
+msgid "Request Project Quote"
+msgstr ""
+
+#: pages/front-page.php:243
+msgid "SALE"
+msgstr ""
+
+#: woocommerce/single-product.php:269
+msgid "Sale"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:181
+#: woocommerce/myaccount/my-address.php:187
+msgid "San Francisco"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:223
+#: woocommerce/myaccount/my-address.php:229
+msgid "Save Address"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:91
+#: woocommerce/myaccount/form-edit-account.php:73
+msgid "Save Changes"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:44
+#: woocommerce/myaccount/my-address.php:46
+msgid "Saved Addresses"
+msgstr ""
+
+#: pages/template-products.php:55
+msgid "Sculptures"
+msgstr ""
+
+#: layout/header.php:94
+msgid "Search"
+msgstr ""
+
+#: layout/footer.php:102 layout/footer.php:124
+msgid "Secure Checkout"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:214
+#: woocommerce/myaccount/my-address.php:220
+msgid "Set as Billing Address"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:206
+#: woocommerce/myaccount/my-address.php:212
+msgid "Set as Primary Shipping Address"
+msgstr ""
+
+#: pages/front-page.php:146
+msgid "Set featured product in Customizer → Homepage Settings."
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:223
+msgid "Shipped"
+msgstr ""
+
+#: woocommerce/cart/cart.php:166
+msgid "Shipping"
+msgstr ""
+
+#: pages/front-page.php:107
+msgid "Shop Collection"
+msgstr ""
+
+#: layout/header.php:107 pages/template-signup.php:44
+msgid "Sign In"
+msgstr ""
+
+#. Name of the template
+#: template-signin.php:2
+msgid "Sign In Page"
+msgstr ""
+
+#: pages/template-signin.php:48
+msgid "Sign Up"
+msgstr ""
+
+#. Name of the template
+#: template-signup.php:2
+msgid "Sign Up Page"
+msgstr ""
+
+#: woocommerce/single-product.php:174
+msgid "SKU:"
+msgstr ""
+
+#: layout/footer.php:87
+msgid "Social"
+msgstr ""
+
+#: pages/template-products.php:89
+msgid "Solid Carrara marble sculpture"
+msgstr ""
+
+#: pages/template-products.php:67
+msgid "Solis Tiered Fountain"
+msgstr ""
+
+#: pages/front-page.php:338
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: layout/products-layout.php:127
+#, php-format
+msgid "Sort by: %s"
+msgstr ""
+
+#: pages/template-products.php:194
+msgid "Sort by: Featured"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:187
+msgid "State/Province"
+msgstr ""
+
+#: pages/front-page.php:80
+msgid "Stone Waterfalls"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:167
+#: woocommerce/myaccount/my-address.php:179
+msgid "Street Address"
+msgstr ""
+
+#: woocommerce/myaccount/edit-address.php:108
+#: woocommerce/myaccount/my-address.php:114
+#: woocommerce/myaccount/my-address.php:131
+msgid "Studio Office"
+msgstr ""
+
+#: layout/footer.php:27
+msgid "Subscribe to our Design Journal"
+msgstr ""
+
+#: woocommerce/cart/cart.php:153
+msgid "Subtotal"
+msgstr ""
+
+#: layout/footer.php:63 pages/template-signin.php:57
+msgid "Support"
+msgstr ""
+
+#: woocommerce/single-product.php:188
+msgid "Sustainability Footprint"
+msgstr ""
+
+#: layout/header.php:82 layout/header.php:158
+msgid "Switch language"
+msgstr ""
+
+#: woocommerce/single-product.php:209
+msgid "Technical Specifications"
+msgstr ""
+
+#: pages/front-page.php:371
+msgid "Tell us about your project"
+msgstr ""
+
+#: pages/template-products.php:75
+msgid "Tempered glass and slate frame"
+msgstr ""
+
+#: pages/template-signin.php:56
+msgid "Terms of Service"
+msgstr ""
+
+#: pages/front-page.php:334
+msgid "Thank you, we'll contact you soon."
+msgstr ""
+
+#: layout/header.php:89 layout/header.php:165
+msgid "Toggle dark mode"
+msgstr ""
+
+#: woocommerce/cart/cart.php:45 woocommerce/cart/cart.php:195
+msgid "Total"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:116 woocommerce/myaccount/orders.php:152
+msgid "Total Amount"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:299
+msgid "Track on DHL Website"
+msgstr ""
+
+#: layout/footer.php:75
+msgid "Track Order"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:176
+#, php-format
+msgid "Track Order %s"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:156
+msgid "Track Package"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:53
+msgid ""
+"Track your biophilic sanctuary acquisitions and manage your premium "
+"landscape investments."
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:264
+msgid "Tracking Number"
+msgstr ""
+
+#: pages/front-page.php:98
+msgid "Transform Your Space with"
+msgstr ""
+
+#: pages/front-page.php:217
+msgid "Trending Now"
+msgstr ""
+
+#: woocommerce/cart/cart.php:144
+msgid "Update Cart"
+msgstr ""
+
+#: woocommerce/cart/cart.php:143
+msgid "Update cart"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:31
+msgid ""
+"Use the sidebar to navigate to your profile, orders, favorites, or addresses."
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:114
+#: woocommerce/myaccount/form-edit-account.php:96
+msgid "Use your phone to sign in securely without remembering passwords."
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:51
+msgid "Verified"
+msgstr ""
+
+#: layout/footer.php:52
+msgid "Vertical Gardens"
+msgstr ""
+
+#: pages/front-page.php:166
+msgid "View All Categories"
+msgstr ""
+
+#: pages/account-favorites.php:70 woocommerce/myaccount/orders.php:122
+msgid "View Details"
+msgstr ""
+
+#: woocommerce/single-product.php:166
+msgid "View in 3D / AR"
+msgstr ""
+
+#: layout/footer.php:77
+msgid "Warranty Policy"
+msgstr ""
+
+#: layout/footer.php:53 pages/template-products.php:53
+msgid "Water Features"
+msgstr ""
+
+#: pages/front-page.php:347
+msgid ""
+"We partner with architects, real estate developers, and hospitality giants "
+"to provide bespoke landscaping solutions at scale."
+msgstr ""
+
+#: woocommerce/single-product.php:231
+msgid "Weight"
+msgstr ""
+
+#: pages/template-signin.php:27
+msgid "Welcome Back"
+msgstr ""
+
+#: woocommerce/myaccount/dashboard.php:21
+#, php-format
+msgid "Welcome, %s"
+msgstr ""
+
+#: layout/header.php:56 layout/header.php:138
+msgid "Wholesale"
+msgstr ""
+
+#: layout/footer.php:76
+msgid "Wholesale Portal"
+msgstr ""
+
+#: woocommerce/single-product.php:253
+msgid "You May Also Like"
+msgstr ""
+
+#: woocommerce/cart/cart.php:28
+msgid "Your cart is currently empty."
+msgstr ""
+
+#: pages/account-favorites.php:50
+msgid "Your Favorites"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:52
+msgid "Your Orders"
+msgstr ""
+
+#: woocommerce/myaccount/edit-account.php:107
+#: woocommerce/myaccount/form-edit-account.php:89
+msgid "Your personal data is encrypted and never shared with third parties."
+msgstr ""
+
+#: woocommerce/cart/cart.php:20
+msgid "Your Shopping Cart"
+msgstr ""
+
+#: pages/template-products.php:60
+msgid "Zenith Concrete Planter"
+msgstr ""
+
+#: pages/account-favorites.php:22
+msgid "Zenith Tiered Fountain"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:29
+msgid "Zenith Tiered Stone Fountain"
+msgstr ""
+
+#: functions.php:448
+msgid "— None —"
+msgstr ""
